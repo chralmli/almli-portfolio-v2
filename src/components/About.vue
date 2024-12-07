@@ -1,24 +1,14 @@
 <template>
   <section
-    class="about relative min-h-screen bg-gray-900 overflow-hidden py-24"
+    class="about relative min-h-screen overflow-hidden py-12 sm:py-16 lg:py-24"
     id="about"
   >
-    <!-- Animated Background Elements -->
-    <div class="absolute inset-0 overflow-hidden">
-      <div
-        v-for="n in 3"
-        :key="n"
-        class="absolute bg-gradient-to-r from-indigo-500/10 to-purple-500/10 rounded-full blur-3xl"
-        :style="getBlobStyle(n)"
-
-      ></div>
-    </div>
 
         <!-- Main Content -->
-        <div class="container relative mx-auto px-4 z-10">
+        <div class="container relative z-1 mx-auto px-4 z-10">
           <div class="max-w-6xl mx-auto">
             <!-- Section Header -->
-            <div class="text-center mb-16" data-aos="fade-down">
+            <div class="text-center mb-16 section-header" data-aos="fade-down">
               <h2 class="text-4xl md:text-6xl font-bold bg-gradient-to-r from-indigo-300 to-purple-300 bg-clip-text text-transparent mb-4">
                 Om Meg
               </h2>
@@ -26,36 +16,36 @@
             </div>
 
             <!-- Content Grid -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center px-4 lg:px-8">
               <!-- Profile Image Section -->
               <div
-                class="relative order-2 lg:order-1"
+                class="relative order-2 lg:order-1 profile-image-section w-full max-w-md mx-auto lg:max-w-none"
                 data-aos="fade-right"
               >
-                <div class="relative group">
+                <div class="relative group aspect-square w-full max-w-sm mx-auto">
                   <!-- Main Image -->
-                  <div class="relative z-10 rounded-2xl overflow-hidden shadow-2xl transform transition-transform duration-500 group-hover:scale-105 aspect-square">
+                  <div class="relative z-10 rounded-2xl overflow-hidden shadow-2xl transform transition-transform duration-500 group-hover:scale-105 aspect-square main-image">
                     <img
                       src="../assets/images/profile_img.jpg"
                       alt="Christian Almli"
                       class="w-full h-full object-cover"
                     >
                     <!-- Gradient Overlay -->
-                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 gradient-overlay"></div>
                   </div>
 
                   <!-- Decorative Elements -->
-                  <div class="absolute -inset-4 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl opacity-20 blur group-hover:opacity-30 transition-opacity duration-500"></div>
+                  <div class="absolute -inset-4 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-2xl opacity-20 blur group-hover:opacity-30 transition-opacity duration-500 decorative-element"></div>
 
                   <!-- Tech Stack Icons -->
-                  <div class="absolute -right-4 top-4 flex flex-col gap-4 z-20">
+                  <div class="absolute -right-2 lg:-right-4 top-4 flex flex-col gap-3 lg:gap-4 z-20">
                     <div
                       v-for="(tech, index) in techStack"
                       :key="tech.name"
-                      class="tech-icon text-center bg-white/10 backdrop-blur-lg p-3 rounded-full shadow-lg transform transition-all duration-300 hover:scale-110 hover:bg-white/20 animate-float"
-                      :style="{ transitionDelay: `${index * 100}ms`, animationDelay: `${index * 200}ms` }"
+                      class="tech-icon text-center bg-white/10 backdrop-blur-lg p-2 lg:p-3 rounded-full shadow-lg transform transition-all duration-300 hover:scale-110 hover:bg-white/20 animate-float"
+                      :style="{ animationDelay: `${index * 200}ms` }"
                     >
-                      <font-awesome-icon :icon="tech.icon" class="text-2xl text-white"/>
+                      <font-awesome-icon :icon="tech.icon" class="text-xl lg:text-2xl text-white"/>
                   </div>
                 </div>
             </div>
@@ -63,11 +53,11 @@
 
           <!-- Bio content -->
           <div
-            class="order-1 lg:order-2 space-y-6"
+            class="order-1 lg:order-2 space-y-4 lg:space-y-6 px-4 lg:px-0"
             data-aos="fade-left"
           >
             <!-- Bio Paragraphs -->
-            <div class="space-y-6 text-lg text-gray-300">
+            <div class="bio-content space-y-4 lg:space-y-6 text-base lg:text-lg text-gray-300">
               <p class="leading-relaxed">
                 Hei! Jeg heter Christian, og jeg er en nyutdannet front-end utvikler fra Steinkjer i Trøndelag. Jeg elsker å lage brukervennlige og flotte nettsider.
               </p>
@@ -77,7 +67,7 @@
             </div>
 
             <!-- Skills Grid -->
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-4 mt-6 lg:mt-8">
               <div
                 v-for="skill in skills"
                 :key="skill.name"
@@ -103,17 +93,17 @@
             </div>
 
             <!-- Call to Action -->
-            <div class="flex gap-4 mt-8">
+            <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-6 lg:mt-8 call-to-action">
               <a
                 href="#portfolio"
-                class="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-full font-medium hover:bg-indigo-700 transition-colors duration-300"
+                class="w-full sm:w-auto text-center inline-flex items-center justify-center gap-2 px-4 lg:px-6 py-2 lg:py-3 bg-indigo-600 text-white rounded-full font-medium hover:bg-indigo-700 transition-colors duration-300"
               >
                 Se Mine Prosjekter
                 <font-awesome-icon icon="arrow-right" />
               </a>
               <a
                 href="#contact"
-                class="inline-flex items-center gap-2 px-6 py-3 border border-indigo-500/30 text-indigo-300 rounded-full font-medium hover:border-indigo-500 hover:text-white transition-colors duration-300"
+                class="w-full sm:w-auto text-center inline-flex items-center justify-center gap-2 px-4 lg:px-6 py-2 lg:py-3 border border-indigo-500/30 text-indigo-300 rounded-full font-medium hover:border-indigo-500 hover:text-white transition-colors duration-300"
               >
                 Kontakt Meg
               </a>
@@ -126,7 +116,8 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, nextTick } from 'vue';
+import { gsap } from 'gsap';
 
 const skillsAnimated = ref(false);
 
@@ -150,123 +141,80 @@ const skills = [
   { name: 'TypeScript', icon: ['fas', 'code'], level: 80 }
 ];
 
-// Animated background blobs
-const getBlobStyle = (index) => {
-  const positions = [
-    { top: '10%', left: '10%' },
-    { top: '60%', right: '10%' },
-    { bottom: '10%', left: '40%' }
-  ];
-  const sizes = ['600px', '500px', '700px'];
-
-  return {
-    width: sizes[index - 1],
-    height: sizes[index - 1],
-    ...positions[index - 1],
-    animation: `float-${index} ${15 + index * 2}s infinite linear`,
-  };
-};
-
 // Initialize skill bar animations
 const initSkillBars = () => {
-  if (skillsAnimated.value) return;
+    if (skillsAnimated.value) return;
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const card = entry.target;
-        const progressBar = card.querySelector('.skill-progress');
-
-        progressBar.style.width = '0%';
-        void progressBar.offsetHeight;
-
-        requestAnimationFrame(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const progressBar = entry.target.querySelector('.skill-progress');
           progressBar.style.width = `${progressBar.getAttribute('data-level')}%`;
-        })
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
 
-        observer.unobserve(card);
-      }
+    document.querySelectorAll('.skill-card').forEach((card) => {
+      observer.observe(card);
     });
-  }, { threshold: 0.2 });
 
-  document.querySelectorAll('.skill-card').forEach(card => {
-    observer.observe(card);
-  });
-};
+    skillsAnimated.value = true;
+  };
 
-onMounted(() => {
+  // Initialize animations on component mount
+  onMounted(() => {
+    // Fade in animations for section header and content
+    const contentElements = {
+      '.section-header': { y: -50 },
+      // '.profile-image-section': { x: -50 },
+      '.bio-content': { x: 50 },
+      '.call-to-action a': { y: 20, stagger: 0.2 }
+    };
+
+    // Apply animations with consistent timing
+    Object.entries(contentElements).forEach(([selector, props]) => {
+      gsap.from(selector, {
+        ...props,
+        duration: 1.5,
+        ease: 'power2.out',
+        delay: selector === '.section-header' ? 0 : 0.5
+      });
+    });
   initSkillBars();
 });
 </script>
 
-<style>
-  /* Floating animation for skill icons */
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-  }
-
-  .animate-float {
-    animation: float 3s ease-in-out infinite;
-  }
-
-  .blue-3xl {
-    will-change: transform;
-    transform-origin: center;
-  }
-
-  @keyframes float-1 {
-    0% { transform: translate(0, 0) rotate(0deg) scale(1); }
-    50% { transform: translate(50px, 20px) rotate(180deg) scale(1.1); }
-    100% { transform: translate(0, 0) rotate(360deg) scale(1); }
-  }
-
-  @keyframes float-2 {
-    0% { transform: translate(0, 0) rotate(0deg) scale(1.1); }
-    50% { transform: translate(-30px, -50px) rotate(-180deg) scale(1); }
-    100% { transform: translate(0, 0) rotate(-360deg) scale(1.1); }
-  }
-
-  @keyframes float-3 {
-    0% { transform: translate(0, 0) rotate(0deg) scale(1); }
-    50% { transform: translate(20px, 30px) rotate(90deg) scale(1.2); }
-    100% { transform: translate(0, 0) rotate(180deg) scale(1); }
-  }
-
+<style scoped>
+  /* Tech icons animations */
   .tech-icon {
     opacity: 0;
     transform: translateX(20px);
-    animation: slide-in 0.5s forwards, float 3s ease-in-out infinite;
+    animation: slideInAndFloat 0.5s forwards, float 3s ease-in-out infinite;
   }
 
-  @keyframes slide-in {
+  @keyframes slideInAndFloat {
     to {
       opacity: 1;
       transform: translateX(0);
     }
   }
 
-  .from-indigo-500\/10 {
-    --tw-to-opacity: 0.2;
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
   }
 
-  .to-purple-500\/10 {
-    --tw-to-opacity: 0.2;
-  }
-
-  /* {Ensure smooth transitions} */
+  /* Skill card animations */
   .skill-progress {
     width: 0;
     transition: width 1s ease-in-out;
     will-change: width;
   }
 
-  .skill-card * {
+  .skill-card {
     opacity: 0;
-    transform: translateY(20px);
     animation: fadeInUp 0.5s forwards;
-    animation-delay: var(--delay);
-    @apply transition-all duration-300;
   }
 
   @keyframes fadeInUp {

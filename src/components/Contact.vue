@@ -1,16 +1,5 @@
 <template>
-  <section class="contact relative min-h-screen bg-gray-900 py-24 overflow-hidden" id="contact">
-    <!-- Animated Background Elements -->
-    <div class="absolute inset-0">
-      <div class="absolute inset-0 bg-gradient-to-br from-indigo-600/20 via-purple-500/20 to-pink-500/20"></div>
-      <!-- Animated Shapes -->
-      <div
-        v-for="n in 3"
-        :key="n"
-        class="absolute bg-gradient-to-r from-indigo-500/10 to-purple-500/10 rounded-full blur-3xl"
-        :style="getBlobStyle(n)"
-      ></div>
-    </div>
+  <section class="contact relative min-h-screen py-24 overflow-hidden" id="contact">
 
     <div class="container relative mx-auto px-4 z-10">
       <!-- Section Header -->
@@ -140,23 +129,6 @@
 import { ref } from 'vue';
 import patternImage from '../assets/images/pattern-2-img.png'
 
-// Animated background blobs
-const getBlobStyle = (index) => {
-  const positions = [
-    { top: '10%', left: '10%' },
-    { top: '60%', right: '10%' },
-    { bottom: '10%', left: '40%' }
-  ];
-  const sizes = ['600px', '500px', '700px'];
-
-  return {
-    width: sizes[index - 1],
-    height: sizes[index - 1],
-    ...positions[index - 1],
-    animation: `float-${index} ${15 + index * 2}s infinite linear`,
-  };
-};
-
 const formData = ref({
   name: '',
   email: '',
@@ -182,25 +154,6 @@ const submitForm = async () => {
 </script>
 
 <style>
-/* Blob Animations */
-@keyframes float-1 {
-  0% { transform: translate(0, 0) rotate(0deg) scale(1); }
-  50% { transform: translate(50px, 20px) rotate(180deg) scale(1.1); }
-  100% { transform: translate(0, 0) rotate(360deg) scale(1); }
-}
-
-@keyframes float-2 {
-  0% { transform: translate(0, 0) rotate(0deg) scale(1.1); }
-  50% { transform: translate(-30px, -50px) rotate(-180deg) scale(1); }
-  100% { transform: translate(0, 0) rotate(-360deg) scale(1.1); }
-}
-
-@keyframes float-3 {
-  0% { transform: translate(0, 0) rotate(0deg) scale(1); }
-  50% { transform: translate(20px, 30px) rotate(90deg) scale(1.2); }
-  100% { transform: translate(0, 0) rotate(180deg) scale(1); }
-}
-
 /* Form Styles */
 .form-input,
 .form-textarea {
@@ -211,11 +164,6 @@ const submitForm = async () => {
 .form-textarea::placeholder {
   @apply text-gray-400;
 }
-
-/* .form-input:focus,
-.form-textarea:focus {
-  @apply ring-indigo-500;
-} */
 
  .form-textarea {
   @apply resize-none;

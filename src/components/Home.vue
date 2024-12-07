@@ -1,26 +1,7 @@
 <template>
-  <section
-    class="home relative min-h-screen bg-gray-900 overflow-hidden"
-    id="home"
-  >
-    <!-- Animated Background -->
-    <div class="absolute inset-0">
-      <div class="relative h-full w-full">
-        <!-- Gradient Overlay -->
-          <div class="absolute inset-0 bg-gradient-to-br from-indigo-600/20 via-purple-500/20 to-pink-500/20"></div>
-
-          <!-- Animated Shapes -->
-          <div
-            v-for="n in 5"
-            :key="n"
-            class="floating-shape absolute bg-white/5 backdrop-blur-3xl rounded-full"
-            :style="getRandomShapeStyle(n)"
-          ></div>
-      </div>
-    </div>
-
+  <section class="home relative min-h-screen overflow-hidden" id="home">
     <!-- Main Content -->
-    <div class="relative z-10 container mx-auto px-4 h-screen flex flex-col justify-center items-center">
+    <div class="relative z-1 container mx-auto px-4 h-screen flex flex-col justify-center items-center">
       <!-- Profile Section -->
       <div class="text-center space-y-6 max-w-4xl mx-auto">
         <!-- Animated Hello Text -->
@@ -57,18 +38,18 @@
 
           <!-- Animated Text Carousel -->
           <div
-            class="h-8 md:h-10 overflow-hidden text-indigo-300"
+            class="h-8 md:h-10 overflow-hidden text-indigo-300 relative"
             data-aos="fade-up"
             data-aos-delay="500"
           >
             <transition-group
-              name="slide-fade"
+              name="text-slide"
               tag="div"
-              class="text-md md:text-xl"
+              class="text-md md:text-xl absolute w-full"
             >
               <p
                 :key="currentTextIndex"
-                class="animate-slide-up"
+                class="text-slide-item"
               >
                 {{ rotatingTexts[currentTextIndex] }}
               </p>
@@ -145,7 +126,7 @@
 </template>
 
 <script setup>
-  import { ref, onMounted, onBeforeUnmount } from 'vue';
+  import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue';
 
   // Rotating texts for animation
   const rotatingTexts = [
@@ -165,23 +146,12 @@
     { name: 'Instagram', url: 'https://www.instagram.com/christian/', icon: ['fab', 'instagram'] },
   ];
 
-  // Random shape generator for background
-  const getRandomShapeStyle = (index) => {
-    const size = Math.random() * (400 - 200) + 200;
-    return {
-      width: `${size}px`,
-      height: `${size}px`,
-      left: `${Math.random() * 100}%`,
-      top: `${Math.random() * 100}%`,
-      transform: `translate(-50%, -50%)`,
-      animation: `float-${index} ${Math.random() * (20 - 10) + 10}s infinite`
-    };
-  };
-
   // Start rotating text
   onMounted(() => {
     textInterval = setInterval(() => {
-      currentTextIndex.value = (currentTextIndex.value + 1) % rotatingTexts.length;
+      nextTick(() => {
+        currentTextIndex.value = (currentTextIndex.value + 1) % rotatingTexts.length;
+      });
     }, 3000);
   });
 
@@ -198,12 +168,38 @@
   animation: shine 8s linear infinite;
 }
 
-/* FLoating Shapes Animation */
-@keyframes float-1 { 0%, 100% { transform: translate(-50%, -50%) rotate(0deg); } 50% { transform: translate(-50%, -50%) rotate(180deg); } }
-@keyframes float-2 { 0%, 100% { transform: translate(-50%, -50%) scale(1); } 50% { transform: translate(-50%, -50%) scale(1.2); } }
-@keyframes float-3 { 0%, 100% { transform: translate(-50%, -50%) translateY(0); } 50% { transform: translate(-50%, -50%) translateY(-50px); } }
-@keyframes float-4 { 0%, 100% { transform: translate(-50%, -50%) translateX(0); } 50% { transform: translate(-50%, -50%) translateX(50px); } }
-@keyframes float-5 { 0%, 100% { transform: translate(-50%, -50%) rotate(0deg) scale(1); } 50% { transform: translate(-50%, -50%) rotate(90deg) scale(1.1); } }
+.text-slide-item {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.text-slide-enter-active {
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.text-slide-leave-active {
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  position: absolute;
+  width: 100%;
+}
+
+.text-slide-enter-from {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.text-slide-leave-to {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+.text-slide-move {
+  transition: transform 0.8s ease;
+}
 
 @keyframes shine {
   to { background-position: 200% center; }
@@ -229,10 +225,5 @@
 .slide-fade-enter-from {
   transform: translateY(20px);
   opacity: 0;
-}
-
-/* Smooth background animation */
-.floating-shape {
-  will-change: transform;
 }
 </style>

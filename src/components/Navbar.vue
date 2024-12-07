@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="navbar sticky top-0 z-50 transition-all duration-300"
+    class="navbar bg-white/90 sticky top-0 z-50 transition-all duration-300"
     :class="[
       scrolled ? 'bg-white/80 backdrop-blur-lg shadow-lg' : 'bg-transparent',
       {'nav-hidden': scrollingDown && scrolled && !isNavigating}
@@ -10,12 +10,8 @@
       <div class="flex justify-between items-center h-20">
         <!-- Logo -->
          <div class="logo relative group">
-          <a href="#" class="text-2xl font-bold relative">
-            <img 
-              src="../assets/images/almli-dev-logo.png" 
-              alt="Almli Dev"
-              class="h-8 transition-transform duration-300 group-hover:scale-105"
-            >
+          <a href="#" class="text-4xl font-bold relative">
+            <AlmliLogo class="h-14 transition-transform duration-300 group-hover:scale-105" />
             <div class="absolute -inset-2 bg-indigo-500/10 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300"></div>
           </a>
          </div>
@@ -114,6 +110,7 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
+import AlmliLogo from '@/assets/images/almli-solutions-logo.svg';
 
 const isMenuOpen = ref(false);
 const scrolled = ref(false);

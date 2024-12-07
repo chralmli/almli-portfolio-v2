@@ -17,7 +17,10 @@
     "@fortawesome/free-solid-svg-icons": "^6.7.1",
     "@fortawesome/vue-fontawesome": "^3.0.8",
     "aos": "^2.3.4",
+    "gsap": "^3.12.5",
+    "three": "^0.171.0",
     "vanilla-tilt": "^1.8.1",
+    "vanta": "^0.5.24",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0",
     "vue-tilt.js": "^1.1.1"
@@ -31,6 +34,7 @@
     "postcss": "^8.4.49",
     "prettier": "^3.4.1",
     "tailwindcss": "^3.4.15",
-    "vite": "^6.0.1"
+    "vite": "^6.0.1",
+    "vite-svg-loader": "^5.1.0"
   }
 }

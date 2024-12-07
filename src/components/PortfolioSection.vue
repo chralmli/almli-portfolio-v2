@@ -1,18 +1,8 @@
 <template>
-  <section class="portfolio relative min-h-screen bg-gray-900 overflow-hidden py-24" id="portfolio">
-    <!-- Animated Background Elements -->
-    <div class="absolute inset-0">
-      <div class="absolute inset-0 bg-gradient-to-br from-indigo-600/20 via-purple-500/20 to-pink-500/20"></div>
-      <!-- Animated Shapes -->
-      <div
-        v-for="n in 3"
-        :key="n"
-        class="absolute bg-gradient-to-r from-indigo-500/10 to-purple-500/10 rounded-full blur-3xl"
-        :style="getBlobStyle(n)"
-      ></div>
-    </div>
+  <section class="portfolio relative min-h-screen overflow-hidden py-24" id="portfolio">
 
-    <div class="container relative mx-auto px-4 z-10">
+    <!-- Main Content -->
+    <div class="container relative z-1 mx-auto px-4 z-10">
       <!-- Section Header -->
       <div class="text-center mb-16" data-aos="fade-down">
         <h2 class="text-4xl md:text-6xl font-bold bg-gradient-to-r from-indigo-300 to-purple-300 bg-clip-text text-transparent mb-4">
@@ -26,7 +16,7 @@
         <button 
           v-for="filter in filters" 
           :key="filter.name" 
-          @click="activeFilter = filter.name" 
+          @click="handleFilterClick(filter)" 
           :class="[
             'px-6 py-2 rounded-full transition-all duration-300 flex items-center gap-2 backdrop-blur-sm',
             activeFilter === filter.name
@@ -46,12 +36,7 @@
           v-for="project in filteredProjects" 
           :key="project.id" 
           class="project-card group"
-          :data-tilt-max="15"
-          :data-tilt-speed="400"
-          :data-tilt-scale="1.02"
-          :data-tilt-glare="true"
-          :data-tilt-max-glare="0.2"
-          :data-tilt-perspective="1000"
+          ref="projectCards"
           data-aos="fade-up"
         >
           <!-- Project Image Container -->
@@ -103,7 +88,7 @@
           </div>
 
           <!-- Technologies Used -->
-           <div class="flex flex-wrap gap-2 mt-4 px-2">
+          <div class="flex flex-wrap gap-2 mt-4 px-2">
             <span
               v-for="tech in project.technologies"
               :key="tech"
@@ -111,8 +96,8 @@
             >
               {{ tech }}
             </span>
-           </div>
-          </div>
+          </div> 
+        </div>
       </div>
 
       <Modal
@@ -185,46 +170,50 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, nextTick } from 'vue';
+import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue';
 import Modal from './Modal.vue';
+import VanillaTilt from 'vanilla-tilt';
 
 // Project Images
 import grooveGridImage from '../assets/images/groove-grid_smartmockups.png';
 import csmImage from '../assets/images/csm-mockup.png';
 import bandSiteImage from '../assets/images/band-website-mockup.png';
-import holidazeImage from '../assets/images/holidaze-mockup.png'
+import holidazeImage from '../assets/images/holidaze-mockup.png';
+import ecomImage from '../assets/images/ecom-mockup.png';
+import auctionImage from '../assets/images/auction-mockup.png';
+import socialImage from '../assets/images/iron-crew-mockup.png';
+import gameHubImage from '../assets/images/gamehub-mockup.png';
+
+// State management
+const activeFilter = ref('all');
+const isModalOpen = ref(false);
+const selectedProject = ref(null);
+
+    // Initialize Vanilla Tilt
+    nextTick(() => {
+    VanillaTilt.init(document.querySelectorAll('.project-card'), {
+      max: 10,
+      speed: 300,
+      scale: 1.05,
+      glare: false,
+      perspective: 800,
+      gyroscope: true,
+      gyroscopeSamples: 10,
+    });
+  });
 
 defineOptions({
   name: 'PortfolioSection',
 })
 // Filter configurations
 const filters = [
-  { name: 'Alle', icon: ['fas', 'globe'] },
-  { name: 'React', icon: ['fab', 'react'] },
-  { name: 'Vue', icon: ['fab', 'vuejs'] },
-  { name: 'TypeScript', icon: ['fas', 'code'] },
+  { name: 'Alle', value: 'all', icon: ['fas', 'globe'] },
+  { name: 'React', value: 'react', icon: ['fab', 'react'] },
+  { name: 'Vue', value: 'vue', icon: ['fab', 'vuejs'] },
+  { name: 'TypeScript', value: 'typescript', icon: ['fas', 'code'] },
+  { name: 'JavaScript', value: 'javascript', icon: ['fab', 'js'] },
+  { name: 'Next.js', value: 'next', icon: ['fas', 'code'] }
 ];
-
-const activeFilter = ref('Alle');
-const isModalOpen = ref(false);
-const selectedProject = ref(null);
-
-// Animated background blobs
-const getBlobStyle = (index) => {
-  const positions = [
-    { top: '10%', left: '10%' },
-    { top: '60%', right: '10%' },
-    { bottom: '10%', left: '40%' }
-  ];
-  const sizes = ['600px', '500px', '700px'];
-
-  return {
-    width: sizes[index - 1],
-    height: sizes[index - 1],
-    ...positions[index - 1],
-    animation: `float-${index} ${15 + index * 2}s infinite linear`,
-  };
-};
 
 // Projects data
 const projects = [
@@ -234,8 +223,8 @@ const projects = [
     description: 'The Groove Grid er et innovativt og brukervennlig trommeblogg-nettsted, utviklet med HTML, CSS, JavaScript og WordPress REST API. Nettstedet har sider for Hjem, Om, Blogg, Spesifikk Bloggpost og Kontakt. Hovedfunksjonene inkluderer en "Siste innlegg" seksjon på Hjem-siden, en Bloggside som viser de første 10 bloggene med flere lastealternativer, dynamisk innhold på den spesifikke bloggsiden, og en Kontaktside med egendefinert JavaScript-validering. Dette prosjektet demonstrerer avanserte webutviklingsferdigheter, og kombinerer funksjonalitet med en lidenskap for trommer.',
     image: grooveGridImage,
     url: 'https://taupe-medovik-72ed9d.netlify.app/',
-    repo: 'https://github.com/chralmli/project-exam-2-chralmli',
-    category: 'JavaScript',
+    repo: 'https://github.com/chralmli/project-exam-1-chralmli',
+    categories: ['javascript'],
     technologies: ['HTML', 'CSS', 'JavaScript', 'WordPress REST API'],
     features: [
       'Dynamisk blogginnhold med WordPress REST API',
@@ -251,22 +240,26 @@ const projects = [
     image: holidazeImage,
     url: 'https://holidaze-stays.netlify.app/',
     repo: 'https://github.com/chralmli/PE-2-holidaze',
-    category: 'TypeScript, React',
-    technologies: ['TypeScript', 'React'],
+    categories: ['typescript', 'react'],
+    technologies: ['TypeScript', 'React', 'Vite', 'Cypress'],
     features: [
       'Brukerautentisering',
-      'Responsivt design'
+      'Administatorpanel',
+      'Dynamisk innhold',
+      'Funksjonell booking av overnattingssteder',
+      'Funksjonell søkefunksjon',
+      'Funksjonell filtrering',
     ]
   },
   {
     id: 3,
-    title: 'Main Street Revival',
+    title: 'Ecom Store',
     description: 'Dette er det offisielle nettstedet for bandet mitt, bygget med Next.js. Jeg har utviklet en tilpasset musikkspiller fra bunnen av, slik at brukere kan lytte til våre nyeste låter sømløst. Nettstedet har et moderne design med interaktive elementer, som gir en flott brukeropplevelse.',
-    image: bandSiteImage,
+    image: ecomImage,
     url: 'https://holidaze-stays.netlify.app/',
-    repo: 'https://github.com/chralmli/PE-2-holidaze',
-    category: 'TypeScript, React',
-    technologies: ['Next.js'],
+    repo: 'https://github.com/chralmli/MainStRevivalWebsite/tree/master',
+    categories: ['javascript'],
+    technologies: ['JavaScript'],
     features: [
       'Custom Music Player',
       'Responsivt design'
@@ -274,24 +267,91 @@ const projects = [
   },
   {
     id: 4,
+    title: 'Main Street Revival',
+    description: 'Dette er det offisielle nettstedet for bandet mitt, bygget med Next.js. Jeg har utviklet en tilpasset musikkspiller fra bunnen av, slik at brukere kan lytte til våre nyeste låter sømløst. Nettstedet har et moderne design med interaktive elementer, som gir en flott brukeropplevelse.',
+    image: bandSiteImage,
+    url: 'https://holidaze-stays.netlify.app/',
+    repo: 'https://github.com/chralmli/MainStRevivalWebsite/tree/master',
+    categories: ['next'],
+    technologies: ['Next.js'],
+    features: [
+      'Custom Music Player',
+      'Responsivt design'
+    ]
+  },
+  {
+    id: 5,
     title: 'Community Science Museum',
     description: 'Nettstedet for Community Science Museum er en livlig digital portal designet for å engasjere ungdomsskoleelever og deres foreldre med spennende utdanningsinnhold. Nettstedet viser museets utstillinger og arrangementer gjennom et interaktivt og tilgjengelig grensesnitt, og følger WCAG-standarder for inkludering. Med et responsivt design for sømløs nettlesing på alle enheter, er nettstedet bygget med semantisk HTML for strukturert innhold og optimalisert CSS for best mulig ytelse.',
     image: csmImage,
     url: 'https://elaborate-speculoos-c50810.netlify.app/',
-    repo: 'https://github.com/chralmli/PE-2-holidaze',
-    category: 'TypeScript, React',
+    repo: 'https://github.com/chralmli/semester_project-1',
+    categories: ['HTML, CSS'],
     technologies: ['HTML', 'CSS'],
     features: [
-      'Responsivt design'
+      'Responsivt design',
+      'Fokus på målgruppe'
     ]
   },
+  {
+    id: 6,
+    title: 'Gavel Glance (Auction Website)',
+    description: 'Nettstedet for Community Science Museum er en livlig digital portal designet for å engasjere ungdomsskoleelever og deres foreldre med spennende utdanningsinnhold. Nettstedet viser museets utstillinger og arrangementer gjennom et interaktivt og tilgjengelig grensesnitt, og følger WCAG-standarder for inkludering. Med et responsivt design for sømløs nettlesing på alle enheter, er nettstedet bygget med semantisk HTML for strukturert innhold og optimalisert CSS for best mulig ytelse.',
+    image: auctionImage,
+    url: 'https://gavelglance.netlify.app',
+    repo: 'https://github.com/chralmli/gavel-glance-SP2',
+    categories: ['HTML, CSS'],
+    technologies: ['HTML', 'CSS'],
+    features: [
+      'Responsivt design',
+      'Fokus på målgruppe'
+    ]
+  },
+  {
+    id: 7,
+    title: 'Iron Crew (Social Media Client)',
+    description: 'Nettstedet for Community Science Museum er en livlig digital portal designet for å engasjere ungdomsskoleelever og deres foreldre med spennende utdanningsinnhold. Nettstedet viser museets utstillinger og arrangementer gjennom et interaktivt og tilgjengelig grensesnitt, og følger WCAG-standarder for inkludering. Med et responsivt design for sømløs nettlesing på alle enheter, er nettstedet bygget med semantisk HTML for strukturert innhold og optimalisert CSS for best mulig ytelse.',
+    image: socialImage,
+    url: 'https://ironcrew.netlify.app/',
+    repo: 'https://github.com/chralmli/social-media-client',
+    categories: ['HTML, CSS'],
+    technologies: ['HTML', 'CSS'],
+    features: [
+      'Responsivt design',
+      'Fokus på målgruppe'
+    ]
+  },
+  {
+    id: 8,
+    title: 'Gamehub',
+    description: 'Nettstedet for Community Science Museum er en livlig digital portal designet for å engasjere ungdomsskoleelever og deres foreldre med spennende utdanningsinnhold. Nettstedet viser museets utstillinger og arrangementer gjennom et interaktivt og tilgjengelig grensesnitt, og følger WCAG-standarder for inkludering. Med et responsivt design for sømløs nettlesing på alle enheter, er nettstedet bygget med semantisk HTML for strukturert innhold og optimalisert CSS for best mulig ytelse.',
+    image: gameHubImage,
+    url: 'https://ironcrew.netlify.app/',
+    repo: 'https://github.com/chralmli/social-media-client',
+    categories: ['HTML, CSS'],
+    technologies: ['HTML', 'CSS'],
+    features: [
+      'Responsivt design',
+      'Fokus på målgruppe'
+    ]
+  },
+
+
 ];
 
 // Computed properties
 const filteredProjects = computed(() => {
-  if (activeFilter.value === 'Alle') return projects;
-  return projects.filter(project => project.category === activeFilter.value);
+  if (activeFilter.value === 'all') return projects;
+
+  return projects.filter(project => {
+    const projectCategories = project.categories || [];
+    return projectCategories.includes(activeFilter.value);
+  });
 });
+
+const handleFilterClick = (filter) => {
+  activeFilter.value = filter.value;
+};
 
 // Methods
 const openModal = (project) => {
@@ -306,23 +366,11 @@ const closeModal = () => {
 </script>
 
 <style>
-@keyframes float-1 {
-    0% { transform: translate(0, 0) rotate(0deg) scale(1); }
-    50% { transform: translate(50px, 20px) rotate(180deg) scale(1.1); }
-    100% { transform: translate(0, 0) rotate(360deg) scale(1); }
-  }
 
-  @keyframes float-2 {
-    0% { transform: translate(0, 0) rotate(0deg) scale(1.1); }
-    50% { transform: translate(-30px, -50px) rotate(-180deg) scale(1); }
-    100% { transform: translate(0, 0) rotate(-360deg) scale(1.1); }
-  }
-
-  @keyframes float-3 {
-    0% { transform: translate(0, 0) rotate(0deg) scale(1); }
-    50% { transform: translate(20px, 30px) rotate(90deg) scale(1.2); }
-    100% { transform: translate(0, 0) rotate(180deg) scale(1); }
-  }
+.portfolio {
+  position: relative;
+  isolation: isolate;
+}
 
 .project-card {
   @apply bg-white/5 rounded-xl backdrop-blur-sm overflow-hidden transition-all duration-300;
@@ -330,7 +378,8 @@ const closeModal = () => {
 }
 
 .project-card img {
-  transform: translateZ(20px);
+  transform: translateZ(0);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .project-card .content {
