@@ -23,7 +23,7 @@ export default defineConfig({
   },
   build: {
     commonjsOptions: {
-      include: [/three/, /vanta/]
+      include: [/three/, /vanta/, /aos/, /node_modules/]
     }
   }
 })

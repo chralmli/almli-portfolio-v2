@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import './style.css'
-import AOS from 'aos'
+import AOS from 'aos/dist/aos.js'
 import 'aos/dist/aos.css'
 import VueTilt from 'vue-tilt.js'
 
@@ -26,34 +26,20 @@ library.add(
   faCode,
   faArrowRight,
   faBars,
-  faTimes2,
   faChevronDown,
   faEnvelope,
   faMapMarkerAlt,
-
-  // Brand Icons
   faLinkedin,
   faLinkedinIn,
   faTwitter,
   faInstagram,
   faVuejs,
   faJs,
-  faCode,
   faHtml5,
   faCss3Alt,
   faWordpress,
   faGitAlt,
-
-  // Brand Icon
-  faGithub,
-  faReact,
-  faVuejs,
-  faJs,
-  faHtml5,
-  faCss3Alt,
-  faWordpress,
-  faGitAlt,
-  faGithub
+  faReact
 )
 
 const app = createApp(App)
@@ -62,7 +48,6 @@ const app = createApp(App)
 app.use(router)
 app.component('font-awesome-icon', FontAwesomeIcon)
 app.use(VueTilt)
-app.mount('#app')
 
 // Initialize AOS after app mount
 AOS.init({
@@ -73,3 +58,5 @@ AOS.init({
     delay: 50,
     disable: 'mobile'
 })
+
+app.mount('#app')
