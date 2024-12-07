@@ -11,7 +11,7 @@
         <!-- Brand Section -->
         <div class="md:col-span-4 space-y-4">
           <div class="flex items-center text-white/90">
-            <img src="../assets/images/almli-dev-logo.png" alt="Almli Dev" class="h-8 w-auto">
+            <h2 class="text-2xl font-bold ml-2">Almli Solutions</h2>
           </div>
           <p class="text-gray-400 max-w-sm">
             Skaper moderne webopplevelser med fokus på brukervennlighet og innovativt design.
@@ -98,6 +98,7 @@
 </template>
 
 <script setup>
+
 const socialLinks = [
   { name: 'Github', icon: ['fab', 'github'], url: 'https://github.com/chralmli' },
   { name: 'LinkedIn', icon: ['fab', 'linkedin'], url: 'https://www.linkedin.com/in/chrisalm97/' },
