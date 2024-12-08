@@ -207,7 +207,6 @@ const initSkillBars = () => {
   .skill-progress {
     width: 0;
     transition: width 1s ease-in-out;
-    will-change: width;
   }
 
   .skill-card {

@@ -5,7 +5,9 @@ import svgLoader from 'vite-svg-loader'
 
 export default defineConfig({
   plugins: [vue(), svgLoader()],
-  base: '/almli-portfolio-v2/',
+  base: process.env.NODE_ENV === 'production'
+    ? '/almli-portfolio-v2/'
+    : '/',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),

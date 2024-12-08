@@ -16,7 +16,7 @@ const router = createRouter({
         behavior:'smooth'
       }
     }
-    return { top: 0 }
+    return savedPosition || { top: 0 }
   }
 })
 
