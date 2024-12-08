@@ -45,6 +45,13 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
+/* Global Styles */
+
+/* Handles mobile viewport heights */
+:root {
+  --vh: 1vh;
+}
+
 body {
   background-color: #111827;
   overflow-x: hidden;
@@ -53,5 +60,21 @@ body {
 main {
   position: relative;
   z-index: 1;
+}
+
+.min-h--mobile-screen {
+  min-height: calc(var(--vh) * 100);
+}
+
+/* Ensure content is always above background */
+.relative {
+  position: relative;
+  z-index: 1;
+}
+
+/* Adjust background container */
+.fixed {
+  position: fixed;
+  z-index: 0;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <section class="home relative min-h-screen overflow-hidden" id="home">
+  <section class="home relative min-h-screen min-h-mobile-screen overflow-hidden" id="home">
     <!-- Main Content -->
     <div class="relative z-1 container mx-auto px-4 h-screen flex flex-col justify-center items-center">
       <!-- Profile Section -->
@@ -33,7 +33,7 @@
             data-aos="fade-up"
             data-aos-delay="400"
           >
-            Front-End Utvikler
+            Frontend-utvikler
           </p>
 
           <!-- Animated Text Carousel -->
@@ -109,7 +109,7 @@
 
         <!-- Scroll Indicator -->
         <div
-          class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
+          class="absolute bottom-24 left-1/2 transform -translate-x-1/2 animate-bounce"
           data-aos="fade-up"
           data-aos-delay="800"
         >

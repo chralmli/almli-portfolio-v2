@@ -217,126 +217,148 @@ const filters = [
 
 // Projects data
 const projects = [
-  {
+{
     id: 1,
+    title: 'Holidaze',
+    description: 'Holidaze var min avsluttende eksamensoppgave i front-end utvikling ved Noroff, kjent som Project Exam 2. Oppgaven krevde å planlegge, designe og utvikle en komplett front-end for en ny bookingplattform for overnattingssteder. Prosjektet reflekterer mine ferdigheter innen moderne webutvikling, inkludert API-integrasjoner, dynamisk innhold og responsivt design.',
+    image: holidazeImage,
+    url: 'https://holidaze-stays.netlify.app/',
+    repo: 'https://github.com/chralmli/PE-2-holidaze',
+    categories: ['typescript', 'react'],
+    technologies: ['TypeScript', 'React', 'Vite', 'Cypress', 'Material-UI', 'Leaflet'],
+    features: [
+      "Brukerautentisering: Registrering og innlogging for både kunder og verter",
+      "Søk og filtrering: Brukervennlig søk og filtrering av overnattingssteder",
+      "Kartfunksjonalitet: Dynamisk oppdatering av steder basert på kartinteraksjoner",
+      "Booking-system: Opprettelse og administrering av bestillinger",
+      "Adminpanel: Opprettelse, oppdatering og sletting av steder og bestillinger",
+      "Responsivt design: Optimalisert for alle skjermstørrelser"
+    ]
+  },
+  {
+    id: 2,
+    title: 'Crimson Cart (Ecom Store)',
+    description: 'Crimson Cart er en eCommerce-plattform utviklet som en del av et skoleprosjekt for å demonstrere ferdigheter innen React. Oppgaven innebar å bygge en komplett nettbutikk med funksjonalitet for produktvisning, handlekurv og bestillinger, basert på et gitt API. Nettstedet har et responsivt design og gir en sømløs handleopplevelse.',
+    image: ecomImage,
+    url: 'https://holidaze-stays.netlify.app/',
+    repo: 'https://github.com/chralmli/MainStRevivalWebsite/tree/master',
+    categories: ['react'],
+    technologies: ["React", "JavaScript", "CSS Modules", "REST API"],
+    features: [
+      "Dynamisk produktoversikt basert på API-data",
+      "Detaljside for individuelle produkter med pris, rabatter og vurderinger",
+      "Look-ahead søkefunksjon som filtrerer produkter basert på navn",
+      "Handlekurv med mulighet for å legge til/fjerne produkter",
+      "Checkout-side som tømmer handlekurven etter kjøp",
+      "Kontaktskjema med validering for navn, e-post, emne og melding",
+      "Responsivt design for mobil, nettbrett og desktop"
+    ]
+  },
+  {
+    id: 3,
+    title: 'Gavel Glance (Auksjonsside)',
+    description: "Gavel Glance er en moderne og dynamisk auksjonsplattform utviklet som en del av Noroff's semesterprosjekt 2. Nettstedet er designet for å la brukere legge til auksjonsobjekter, by på andres objekter og administrere sine egne auksjoner. Plattformen tilbyr sømløs navigasjon, responsivt design og funksjonalitet som skaper en engasjerende brukeropplevelse. Gavel Glance integrerer direkte med Noroff Auction API for å håndtere alle backend-funksjoner, som registrering, innlogging og kredittsystem.",
+    image: auctionImage,
+    url: 'https://gavelglance.netlify.app',
+    repo: 'https://github.com/chralmli/gavel-glance-SP2',
+    categories: ['javascript'],
+    technologies: ['JavaScript', 'Tailwind CSS'],
+    features: [
+      "Brukerautentisering (registrering, innlogging, avataroppdatering)",
+      "Dynamisk visning og søk av auksjonsobjekter",
+      "Mulighet til å opprette og administrere egne auksjoner",
+      "Budgiving-funksjonalitet på andres auksjoner",
+      "Oversikt over brukerkreditt og budhistorikk",
+      "Responsivt design optimalisert for flere enheter"
+    ]
+  },
+  {
+    id: 4,
+    title: 'Iron Crew (Social Media Client)',
+    description: "Iron Crew er et sosialt medieklient-prosjekt utviklet som en del av Noroff's JavaScript 2-eksamen. Nettstedet lar brukere opprette kontoer, poste innhold, og samhandle med andre gjennom et responsivt og brukervennlig grensesnitt. Prosjektet benytter Noroff Social API for å levere dynamisk innhold og implementere funksjoner som visning, opprettelse, redigering og sletting av innlegg. JWT-tokens og lokal lagring håndteres for sømløs brukerautentisering og sikkerhet.",
+    image: socialImage,
+    url: 'https://ironcrew.netlify.app/',
+    repo: 'https://github.com/chralmli/social-media-client',
+    categories: ['javascript'],
+    technologies: ['JavaScript', 'CSS'],
+    features: [
+      "Brukerregistrering med Noroff-epost",
+      "Brukerinnlogging og -autentisering",
+      "Visning av innhold i en feed",
+      "Søke- og filtreringsfunksjonalitet for innlegg",
+      "Oppretting, redigering og sletting av innlegg",
+      "Responsivt design for flere enheter"
+    ]
+  },
+  {
+    id: 5,
     title: 'Groove Grid',
-    description: 'The Groove Grid er et innovativt og brukervennlig trommeblogg-nettsted, utviklet med HTML, CSS, JavaScript og WordPress REST API. Nettstedet har sider for Hjem, Om, Blogg, Spesifikk Bloggpost og Kontakt. Hovedfunksjonene inkluderer en "Siste innlegg" seksjon på Hjem-siden, en Bloggside som viser de første 10 bloggene med flere lastealternativer, dynamisk innhold på den spesifikke bloggsiden, og en Kontaktside med egendefinert JavaScript-validering. Dette prosjektet demonstrerer avanserte webutviklingsferdigheter, og kombinerer funksjonalitet med en lidenskap for trommer.',
+    description: 'Groove Grid er en trommeblogg utviklet som eksamensoppgaven på første året hos Noroff. Nettstedet viser evnen til å bygge dynamiske, responsive og brukervennlige nettsider ved å bruke HTML, CSS, JavaScript og WordPress REST API. Det inkluderer flere sider som Hjem, Om, Blogg, Spesifikk Bloggpost og Kontakt, med fokus på funksjonalitet og avanserte webutviklingsprinsipper.',
     image: grooveGridImage,
     url: 'https://taupe-medovik-72ed9d.netlify.app/',
     repo: 'https://github.com/chralmli/project-exam-1-chralmli',
     categories: ['javascript'],
     technologies: ['HTML', 'CSS', 'JavaScript', 'WordPress REST API'],
     features: [
-      'Dynamisk blogginnhold med WordPress REST API',
-      'Responsivt design for alle enheter',
-      'Tilpasset JavaScript-validering',
-      'Avansert innlastingsfunkjsonalitet'
+      "Dynamisk blogginnhold med WordPress REST API",
+      "Siste innlegg-seksjon med karusell-layout på Hjem-siden",
+      "Bloggside som viser de første 10 innleggene med mulighet for å laste inn flere",
+      "Spesifikk bloggpostside med dynamisk innhold og modal bildevisning",
+      "Tilpasset JavaScript-validering for kontaktskjema",
+      "Responsivt design for sømløs opplevelse på alle enheter"
     ]
   },
   {
-    id: 2,
-    title: 'Holidaze',
-    description: 'Holidaze tilbyr en interaktiv shoppingopplevelse for gamere, med et utvalg av nye og brukte spill.',
-    image: holidazeImage,
-    url: 'https://holidaze-stays.netlify.app/',
-    repo: 'https://github.com/chralmli/PE-2-holidaze',
-    categories: ['typescript', 'react'],
-    technologies: ['TypeScript', 'React', 'Vite', 'Cypress'],
-    features: [
-      'Brukerautentisering',
-      'Administatorpanel',
-      'Dynamisk innhold',
-      'Funksjonell booking av overnattingssteder',
-      'Funksjonell søkefunksjon',
-      'Funksjonell filtrering',
-    ]
-  },
-  {
-    id: 3,
-    title: 'Ecom Store',
-    description: 'Dette er det offisielle nettstedet for bandet mitt, bygget med Next.js. Jeg har utviklet en tilpasset musikkspiller fra bunnen av, slik at brukere kan lytte til våre nyeste låter sømløst. Nettstedet har et moderne design med interaktive elementer, som gir en flott brukeropplevelse.',
-    image: ecomImage,
-    url: 'https://holidaze-stays.netlify.app/',
-    repo: 'https://github.com/chralmli/MainStRevivalWebsite/tree/master',
-    categories: ['javascript'],
-    technologies: ['JavaScript'],
-    features: [
-      'Custom Music Player',
-      'Responsivt design'
-    ]
-  },
-  {
-    id: 4,
+    id: 6,
     title: 'Main Street Revival',
-    description: 'Dette er det offisielle nettstedet for bandet mitt, bygget med Next.js. Jeg har utviklet en tilpasset musikkspiller fra bunnen av, slik at brukere kan lytte til våre nyeste låter sømløst. Nettstedet har et moderne design med interaktive elementer, som gir en flott brukeropplevelse.',
+    description: 'Dette er det offisielle nettstedet for bandet mitt, Main Street Revival, utviklet med Next.js. Nettstedet inkluderer en unik, fra scratch utviklet musikkspiller med en animert vinylplate som roterer når musikken spilles av. Designet er moderne og interaktivt, med fokus på både estetikk og funksjonalitet. Nettsiden tilbyr informasjon om bandet, kommende konserter og utgivelser, og gir en engasjerende opplevelse for våre fans.',
     image: bandSiteImage,
-    url: 'https://holidaze-stays.netlify.app/',
+    url: 'https://www.msrbandofficial.com/',
     repo: 'https://github.com/chralmli/MainStRevivalWebsite/tree/master',
     categories: ['next'],
-    technologies: ['Next.js'],
+    technologies: ["Next.js", "React", "CSS Modules", "HTML"],
     features: [
-      'Custom Music Player',
-      'Responsivt design'
+      "Custom musikkspiller med animert vinylplate",
+      "Detaljert informasjon om bandet og kommende konserter",
+      "Responsivt design for optimal brukeropplevelse på alle enheter",
+      "SEO-optimalisering for bedre synlighet på nettet",
+      "Interaktive elementer som fremhever bandets identitet"
     ]
   },
   {
-    id: 5,
+    id: 7,
+    title: 'Gamehub',
+    description: 'Gamehub er en moderne e-handelsplattform bygget som en del av et cross-course prosjekt. Plattformen er utviklet med JavaScript og integrerer WordPress REST API for dynamisk å hente produkter fra WooCommerce. Brukere kan utforske en oversikt over produkter og få detaljert informasjon om hvert produkt via en individuell produktside. Designet er responsivt og fokuserer på brukervennlighet og moderne funksjonalitet.',
+    image: gameHubImage,
+    url: 'https://polite-concha-5decdc.netlify.app/',
+    repo: 'https://github.com/chralmli/social-media-client',
+    categories: ['javascript'],
+    technologies: ["JavaScript", "HTML", "CSS", "WordPress REST API", "WooCommerce"],
+    features: [
+      "Dynamisk produktinnhold fra WordPress REST API",
+      "Produktdetaljsider med spesifikke data",
+      "Responsivt design for alle enheter",
+      "Kategorisering og visning av produkter",
+      "Grunnleggende sorterings- og filtreringsfunksjoner"
+    ]
+  },
+  {
+    id: 8,
     title: 'Community Science Museum',
-    description: 'Nettstedet for Community Science Museum er en livlig digital portal designet for å engasjere ungdomsskoleelever og deres foreldre med spennende utdanningsinnhold. Nettstedet viser museets utstillinger og arrangementer gjennom et interaktivt og tilgjengelig grensesnitt, og følger WCAG-standarder for inkludering. Med et responsivt design for sømløs nettlesing på alle enheter, er nettstedet bygget med semantisk HTML for strukturert innhold og optimalisert CSS for best mulig ytelse.',
+    description: 'Community Science Museum er et interaktivt og informativt nettsted designet for å engasjere målgruppen som består av barn i grunnskolealder (7-15 år) og familier. Nettstedet er laget for å være inspirerende, brukervennlig og inkluderende, med fokus på WCAG-prinsipper og responsivt design. Det oppfordrer besøkende til å utforske museet og oppleve utstillinger og arrangementer gjennom en visuell og intuitiv opplevelse.',
     image: csmImage,
     url: 'https://elaborate-speculoos-c50810.netlify.app/',
     repo: 'https://github.com/chralmli/semester_project-1',
     categories: ['HTML, CSS'],
     technologies: ['HTML', 'CSS'],
     features: [
-      'Responsivt design',
-      'Fokus på målgruppe'
+      "Responsivt design som fungerer på alle enheter",
+      "WCAG-tilpasset for tilgjengelighet",
+      "Attraktiv og målrettet design for barn og familier",
+      "Rask nedlasting med optimaliserte bilder",
+      "Strukturerte og semantiske HTML-elementer"
     ]
   },
-  {
-    id: 6,
-    title: 'Gavel Glance (Auction Website)',
-    description: 'Nettstedet for Community Science Museum er en livlig digital portal designet for å engasjere ungdomsskoleelever og deres foreldre med spennende utdanningsinnhold. Nettstedet viser museets utstillinger og arrangementer gjennom et interaktivt og tilgjengelig grensesnitt, og følger WCAG-standarder for inkludering. Med et responsivt design for sømløs nettlesing på alle enheter, er nettstedet bygget med semantisk HTML for strukturert innhold og optimalisert CSS for best mulig ytelse.',
-    image: auctionImage,
-    url: 'https://gavelglance.netlify.app',
-    repo: 'https://github.com/chralmli/gavel-glance-SP2',
-    categories: ['HTML, CSS'],
-    technologies: ['HTML', 'CSS'],
-    features: [
-      'Responsivt design',
-      'Fokus på målgruppe'
-    ]
-  },
-  {
-    id: 7,
-    title: 'Iron Crew (Social Media Client)',
-    description: 'Nettstedet for Community Science Museum er en livlig digital portal designet for å engasjere ungdomsskoleelever og deres foreldre med spennende utdanningsinnhold. Nettstedet viser museets utstillinger og arrangementer gjennom et interaktivt og tilgjengelig grensesnitt, og følger WCAG-standarder for inkludering. Med et responsivt design for sømløs nettlesing på alle enheter, er nettstedet bygget med semantisk HTML for strukturert innhold og optimalisert CSS for best mulig ytelse.',
-    image: socialImage,
-    url: 'https://ironcrew.netlify.app/',
-    repo: 'https://github.com/chralmli/social-media-client',
-    categories: ['HTML, CSS'],
-    technologies: ['HTML', 'CSS'],
-    features: [
-      'Responsivt design',
-      'Fokus på målgruppe'
-    ]
-  },
-  {
-    id: 8,
-    title: 'Gamehub',
-    description: 'Nettstedet for Community Science Museum er en livlig digital portal designet for å engasjere ungdomsskoleelever og deres foreldre med spennende utdanningsinnhold. Nettstedet viser museets utstillinger og arrangementer gjennom et interaktivt og tilgjengelig grensesnitt, og følger WCAG-standarder for inkludering. Med et responsivt design for sømløs nettlesing på alle enheter, er nettstedet bygget med semantisk HTML for strukturert innhold og optimalisert CSS for best mulig ytelse.',
-    image: gameHubImage,
-    url: 'https://ironcrew.netlify.app/',
-    repo: 'https://github.com/chralmli/social-media-client',
-    categories: ['HTML, CSS'],
-    technologies: ['HTML', 'CSS'],
-    features: [
-      'Responsivt design',
-      'Fokus på målgruppe'
-    ]
-  },
-
-
 ];
 
 // Computed properties

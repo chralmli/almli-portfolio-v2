@@ -166,8 +166,6 @@ const initSkillBars = () => {
   onMounted(() => {
     // Fade in animations for section header and content
     const contentElements = {
-      '.section-header': { y: -50 },
-      // '.profile-image-section': { x: -50 },
       '.bio-content': { x: 50 },
       '.call-to-action a': { y: 20, stagger: 0.2 }
     };
