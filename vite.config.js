@@ -17,6 +17,8 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, './src'),
     },
+    devtool: 'source-map',
+    extensions: ['.js', '.vue', '.json', '.ts', '.tsx'],
   },
   optimizeDeps: {
     include: [
