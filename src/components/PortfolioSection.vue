@@ -31,73 +31,13 @@
 
       <!-- Projects Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div
-          v-tilt
+        <Project3DCard
           v-for="project in filteredProjects" 
           :key="project.id" 
-          class="project-card group"
-          ref="projectCards"
+          :project="project"
+          @open-modal="openModal"
           data-aos="fade-up"
-        >
-          <!-- Project Image Container -->
-          <div class="relative overflow-hidden rounded-xl aspect-video bg-white/5 backdrop-blur-sm p-2">
-            <img 
-              :src="project.image" 
-              :alt="project.title"
-              class="w-full h-full object-contain rounded-lg transform transition-all duration-500 group-hover:scale-105"
-            >
-
-            <!-- Overlay -->
-            <div class="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-lg">
-              <div class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-6 group-hover:translate-y-0 transition-transform duration-300">
-                <h3 class="text-lg font-semibold text-white mb-2">
-                  {{ project.title }}
-                </h3>
-                <p class="text-gray-300 text-sm line-clamp-2 mb-4">
-                  {{ project.description }}
-                </p>
-
-                <!-- Action Buttons -->
-                <div class="flex items-center gap-4">
-                  <a 
-                    :href="project.url" 
-                    target="_blank"
-                    class="inline-flex items-center gap-2 bg-indigo-600/90 hover:bg-indigo-600 text-white px-4 py-2 rounded-lg transition-colors duration-300"
-                  >
-                    <font-awesome-icon icon="eye" class="text-sm" />
-                    Besøk
-                  </a>
-                  <a 
-                    :href="project.repo" 
-                    target="_blank"
-                    class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-lg transition-colors duration-300"
-                  >
-                    <font-awesome-icon :icon="['fab', 'github']" class="text-sm" />
-                    Kildekode
-                  </a>
-                  <button 
-                    @click="openModal(project)"
-                    class="ml-auto inline-flex items-center gap-2 text-white/70 hover:text-white transition-colors duration-300"
-                  >
-                    <font-awesome-icon icon="info-circle" />
-                    Mer Info
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Technologies Used -->
-          <div class="flex flex-wrap gap-2 mt-4 px-2">
-            <span
-              v-for="tech in project.technologies"
-              :key="tech"
-              class="px-3 py-1 mb-2 text-xs font-medium bg-white/5 text-indigo-300 rounded-full backdrop-blur-sm"
-            >
-              {{ tech }}
-            </span>
-          </div> 
-        </div>
+        />
       </div>
 
       <Modal
@@ -172,7 +112,7 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue';
 import Modal from './Modal.vue';
-import VanillaTilt from 'vanilla-tilt';
+import Project3DCard from './Project3DCard.vue';
 
 // Project Images
 import grooveGridImage from '../assets/images/groove-grid_smartmockups.png';
@@ -189,18 +129,6 @@ const activeFilter = ref('all');
 const isModalOpen = ref(false);
 const selectedProject = ref(null);
 
-    // Initialize Vanilla Tilt
-    nextTick(() => {
-    VanillaTilt.init(document.querySelectorAll('.project-card'), {
-      max: 10,
-      speed: 300,
-      scale: 1.05,
-      glare: false,
-      perspective: 800,
-      gyroscope: true,
-      gyroscopeSamples: 10,
-    });
-  });
 
 defineOptions({
   name: 'PortfolioSection',

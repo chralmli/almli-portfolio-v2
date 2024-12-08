@@ -159,12 +159,10 @@ onBeforeUnmount(() => {
   position: absolute;
   transform-origin: center;
   pointer-events: none;
-  will-change: transform;
 }
 
 .floating-shape {
   position: absolute;
-  will-change: transform;
   pointer-events: none;
   transition: opacity 0.3s ease;
 }

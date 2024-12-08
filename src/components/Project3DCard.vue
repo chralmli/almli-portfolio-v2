@@ -1,131 +1,116 @@
 <template>
-  <div class="perspective w-full" ref="perspective">
-    <div 
-      class="card w-full bg-white/5 backdrop-blur-sm rounded-xl transform-gpu transition-transform duration-50 ease-linear"
-      ref="card"
-      :style="cardStyle"
-    >
-      <!-- Project Image -->
-      <div class="relative overflow-hidden rounded-xl aspect-video p-2">
-        <img
-          :src="project.image"
+  <div class="card-container" ref="cardContainer">
+    <div class="project-card group">
+      <!-- Project Image Container -->
+      <div class="relative overflow-hidden rounded-xl aspect-video bg-white/5 backdrop-blur-sm p-2">
+        <img 
+          :src="project.image" 
           :alt="project.title"
-          class="object-contain w-full h-full rounded-lg"
-        />
-        <div class="absolute inset-0 shadow-effect"></div>
-      </div>
+          class="w-full h-full object-contain rounded-lg transform transition-all duration-500 group-hover:scale-105"
+        >
 
-      <!-- Project Content with 3D transform -->
-      <div class="content p-6 transform-gpu" :style="contentStyle">
-        <h3 class="text-lg font-semibold text-white mb-2">
-          {{ project.title }}
-        </h3>
-        <p class="text-gray-30 text-sm line-clam-2 mb-4">
-          {{ project.description }}
-        </p>
+        <!-- Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-lg">
+          <div class="absolute bottom-0 left-0 right-0 p-6 transform translate-y-6 group-hover:translate-y-0 transition-transform duration-300">
+            <h3 class="text-lg font-semibold text-white mb-2">
+              {{ project.title }}
+            </h3>
+            <p class="text-gray-300 text-sm line-clamp-2 mb-4">
+              {{ project.description }}
+            </p>
 
-        <!-- Action Buttons -->
-        <div class="flex items-center gap-4">
-          <a
-            :href="project.url"
-            target="_blank"
-            class="inline-flex items-center gap-2 bg-indigo-600/90 hover:bg-indigo-600 text-white px-4 py-2 rounded-lg transition-colors duration-300"
-          >
-            <font-awesome-icon icon="eye" class="text-sm" />
-            Besøk
-          </a>
-          <a
-            :href="project.repo"
-            target="_blank"
-            class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-lg transition-colors duration-300"
-          >
-            <font-awesome-icon :icon="['fab', 'github']" class="text-sm" />
-            Kildekode
-          </a>
+            <!-- Action Buttons -->
+            <div class="flex items-center gap-4">
+              <a 
+                :href="project.url" 
+                target="_blank"
+                class="inline-flex items-center gap-2 bg-indigo-600/90 hover:bg-indigo-600 text-white px-4 py-2 rounded-lg transition-colors duration-300"
+              >
+                <font-awesome-icon icon="eye" class="text-sm" />
+                Besøk
+              </a>
+              <a 
+                :href="project.repo" 
+                target="_blank"
+                class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-lg transition-colors duration-300"
+              >
+                <font-awesome-icon :icon="['fab', 'github']" class="text-sm" />
+                Kildekode
+              </a>
+              <button 
+                @click="$emit('openModal', project)"
+                class="ml-auto inline-flex items-center gap-2 text-white/70 hover:text-white transition-colors duration-300"
+              >
+                <font-awesome-icon icon="info-circle" class="text-sm" />
+                Mer Info
+              </button>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Technologies -->
-      <div class="flex flex-wrap gap-2 p-4 transform-gpu" :style="techStyle">
+      <!-- Technologies Used -->
+      <div class="flex flex-wrap gap-2 mt-4 px-2">
         <span
           v-for="tech in project.technologies"
           :key="tech"
-          class="px-3 py-1 text-xs font-medium bg-white/5 text-indigo-300 rounded-full backdrop-blur-sm"
+          class="px-3 py-1 mb-2 text-xs font-medium bg-white/5 text-indigo-300 rounded-full backdrop-blur-sm"
         >
           {{ tech }}
         </span>
-      </div>
+      </div> 
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, computed } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
+import VanillaTilt from 'vanilla-tilt';
 
 const props = defineProps({
   project: {
     type: Object,
-    required: true,
-    default: () => ({})
+    required: true
   }
 });
 
-const card = ref(null);
-const perspective = ref(null);
-const rotation = ref({ x: 0, y: 0 });
+defineEmits(['openModal']);
 
-const cardStyle = computed(() => ({
-  transform: `rotateY(${rotation.value.y}deg) rotateX(${rotation.value.x}deg)`,
-}));
-
-const contentStyle = computed(() => ({
-  transform: `translateZ(60px)`,
-}));
-
-const techStyle = computed(() => ({
-  transform: `translateZ(30px)`,
-}));
-
-const handleMouseMove = (e) => {
-  if (!perspective.value) return;
-
-  const rect = perspective.value.getBoundingClientRect();
-  const centerX = rect.left + rect.width / 2;
-  const centerY = rect.top + rect.height / 2;
-
-  const rotateY = -((e.clientX - centerX) / 30);
-  const rotateX = (e.clientY - centerY) / 30;
-
-  rotation.value = { x: rotateX, y: rotateY };
-};
-
-const handleMouseLeave = () => {
-  rotation.valuer = { x: 0, y: 0 };
-};
+const cardContainer = ref(null);
+let tiltInstance = null;
 
 onMounted(() => {
-  perspective.value?.addEventListener('mousemove', handleMouseMove);
-  perspective.value?.addEventListener('mouseleave', handleMouseLeave);
+  if (cardContainer.value) {
+    tiltInstance = VanillaTilt.init(cardContainer.value, {
+      max: 15,         
+      speed: 400,       
+      scale: 1.02,      
+      glare: true,      
+      "max-glare": 0.2,
+      perspective: 1000,
+      gyroscope: true   // Enable gyroscope on mobile
+    });
+  }
 });
 
 onUnmounted(() => {
-  perspective.value?.removeEventListener('mousemove', handleMouseMove);
-  perspective.value?.removeEventListener('mouseleave', handleMouseLeave);
+  if (tiltInstance) {
+    tiltInstance.destroy();
+  }
 });
 </script>
 
 <style scoped>
-.perspective {
-  perspective: 1000px;
-}
-
-.card {
+.card-container {
   transform-style: preserve-3d;
-  box-shadow: 0 70px 63px -60px rgba(0, 0, 0, 0.3);
+  transform: perspective(1000px);
 }
 
-.shadow-effect {
-  @apply absolute inset-0 blur-[55px] -z-10 opacity-50;
-  background: inherit;
+.project-card {
+  @apply bg-white/5 rounded-xl backdrop-blur-sm overflow-hidden transition-all duration-300;
+  transform-style: preserve-3d;
+  will-change: transform;
 }
+
+/* Keep other styles from your original component */
 </style>

@@ -4,7 +4,6 @@ import router from './router'
 import './style.css'
 import AOS from 'aos/dist/aos.js'
 import 'aos/dist/aos.css'
-import VueTilt from 'vue-tilt.js'
 
 // Font Awesome
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -47,7 +46,6 @@ const app = createApp(App)
 // Initialize AOS
 app.use(router)
 app.component('font-awesome-icon', FontAwesomeIcon)
-app.use(VueTilt)
 
 // Initialize AOS after app mount
 AOS.init({
