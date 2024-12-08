@@ -163,9 +163,8 @@ const scrollToSection = (href) => {
       behavior:'smooth'
     });
 
-    setTimeout(() => {
-      isNavigating.value = false;
-    }, 1000);
+    isNavigating.value = false;
+
   }
   isMenuOpen.value = false;
 };
