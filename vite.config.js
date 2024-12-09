@@ -13,14 +13,10 @@ export default defineConfig({
         script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com;
         style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
         font-src 'self' https://fonts.gstatic.com;
-        img-src 'self' data: https:;
+        img-src 'self' data: blob: https:;
         connect-src 'self' https:;
         frame-src 'self';
         worker-src 'self' blob:;
-        manifest-src 'self';
-        media-src 'self';
-        object-src 'none';
-        child-src 'self';
       `.replace(/\s+/g, ' ').trim()
       }
     },
