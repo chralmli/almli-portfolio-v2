@@ -2,8 +2,8 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import './style.css'
-import AOS from 'aos/dist/aos.js'
-import 'aos/dist/aos.css'
+// import AOS from 'aos/dist/aos.js'
+// import 'aos/dist/aos.css'
 
 // Font Awesome
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -42,19 +42,17 @@ library.add(
 )
 
 const app = createApp(App)
-
-// Initialize AOS
 app.use(router)
 app.component('font-awesome-icon', FontAwesomeIcon)
 
 // Initialize AOS after app mount
-AOS.init({
-    duration: 800,
-    offset: 100,
-    once: true,
-    easing: 'ease-out-cubic',
-    delay: 50,
-    disable: 'mobile'
-})
+// AOS.init({
+//     duration: 800,
+//     offset: 100,
+//     once: true,
+//     easing: 'ease-out-cubic',
+//     delay: 50,
+//     disable: 'mobile'
+// })
 
 app.mount('#app')
