@@ -81,7 +81,7 @@
               v-for="(item, index) in navItems"
               :key="index"
               :href="item.href"
-              class="mobile-nav-link text-xl font-medium text-gray-800 hover:text-indigo-600 transition-colors duration-300"
+              class="mobile-nav-link text-xl font-medium text-gray-800 hover:text-indigo-600 transition-colors duration-300 ml-4"
               :class="{ 'text-indigo-600': activeSection === item.href.substring(1) }"
               @click="handleMobileNavClick(item.href)"
             >
