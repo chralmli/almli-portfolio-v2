@@ -1,11 +1,12 @@
+// src/utils/storage.js
 const storage = {
-    get(key) {
-      try {
-        const item = localStorage.getItem(key);
-        return item ? JSON.parse(item) : null;
-      } catch (error) {
-        console.warn('Storage access error:', error);
-        return null;
+  get(key, defaultValue = null) {
+    try {
+      const item = localStorage.getItem(key);
+      return item ? JSON.parse(item) : defaultValue;
+    } catch (error) {
+      console.warn('Storage access failed:', error);
+      return defaultValue;
     }
   },
 
@@ -14,7 +15,7 @@ const storage = {
       localStorage.setItem(key, JSON.stringify(value));
       return true;
     } catch (error) {
-      console.warn('Storage access error:', error);
+      console.warn('Storage access failed:', error);
       return false;
     }
   },
@@ -24,7 +25,17 @@ const storage = {
       localStorage.removeItem(key);
       return true;
     } catch (error) {
-      console.warn('Storage access error:', error);
+      console.warn('Storage access failed:', error);
+      return false;
+    }
+  },
+
+  clear() {
+    try {
+      localStorage.clear();
+      return true;
+    } catch (error) {
+      console.warn('Storage access failed:', error);
       return false;
     }
   }
