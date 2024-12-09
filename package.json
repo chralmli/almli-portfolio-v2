@@ -8,8 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
-    "format": "prettier --write src/",
-    "deploy": "npm run build && gh-pages -d dist"
+    "format": "prettier --write src/"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.1",
