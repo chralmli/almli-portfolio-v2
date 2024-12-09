@@ -113,13 +113,13 @@
           data-aos="fade-up"
           data-aos-delay="800"
         >
-          <a
-            href="#about"
+          <button
+            @click="scrollToAbout"
             class="text-white/50 hover:text-white transition-colors duration-300"
             aria-label="Scroll down"
           >
             <font-awesome-icon icon="chevron-down" class="text-3xl" />
-          </a>
+          </button>
         </div>
     </div>
   </section>
@@ -159,6 +159,18 @@
   onBeforeUnmount(() => {
     clearInterval(textInterval);
   });
+
+  // Smooth scroll to about section
+  const scrollToAbout = () => {
+    const aboutSection = document.getElementById('about');
+
+    if (aboutSection) {
+      window.scrollTo({
+      top: aboutSection.offsetTop,
+      behavior: 'smooth'
+    });
+  }
+};
 </script>
 
 <style scoped>
