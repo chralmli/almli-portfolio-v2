@@ -12,19 +12,19 @@
       </div>
 
       <!-- Filter Buttons -->
-      <div class="flex justify-center mb-12 gap-4" data-aos="fade-up">
+      <div class="flex flex-wrap justify-center mb-12 gap-4" data-aos="fade-up">
         <button 
           v-for="filter in filters" 
           :key="filter.name" 
           @click="handleFilterClick(filter)" 
           :class="[
-            'px-6 py-2 rounded-full transition-all duration-300 flex items-center gap-2 backdrop-blur-sm',
+            'px-3 sm:px-4 py-2 rounded-full transition-all duration-300 flex items-center gap-1.5 backdrop-blur-sm sm:text-base whitespace-nowrap',
             activeFilter === filter.name
               ? 'bg-indigo-600/90 text-white shadow-lg shadow-indigo-500/25'
               : 'bg-white/5 text-gray-300 hover:bg-white/10'
           ]"
         >
-          <font-awesome-icon :icon="filter.icon" />
+          <font-awesome-icon :icon="filter.icon" class="text-xs sm:text-sm" />
           {{ filter.name }}
         </button>
       </div>
@@ -377,5 +377,20 @@ const closeModal = () => {
 
 .tech-tag:hover {
   @apply bg-indigo-200;
+}
+
+.filter-buttons {
+  transition: all 0.3s ease;
+}
+
+button {
+  height: fit-content;
+  min-height: 2.5rem;
+}
+
+@media (max-width: 640px) {
+  button {
+    min-height: 2.75rem;
+  }
 }
 </style>
