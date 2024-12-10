@@ -59,10 +59,10 @@
             <!-- Bio Paragraphs -->
             <div class="bio-content space-y-4 lg:space-y-6 text-base lg:text-lg text-gray-300">
               <p class="leading-relaxed">
-                Hei! Jeg heter Christian, og jeg er en nyutdannet front-end utvikler fra Steinkjer i Trøndelag. Jeg elsker å lage brukervennlige og flotte nettsider.
+                Hei! Jeg heter Christian, og jeg er en front-end utvikler med nyervervet utdanning fra Noroff. Med base i Steinkjer, Trøndelag, har jeg funnet min lidenskap i å skape digitale opplevelser som kombinerer kreativ design med sømløs funksjonalitet.
               </p>
               <p class="leading-relaxed">
-                Jeg er lidenskapelig opptatt av både design og funksjonalitet, og jeg liker å lage nettsider som er både pene og enkle å bruke. Min tekniske verktøykasse inkluderer:
+                Som utvikler drives jeg av ønsket om å bygge nettsider som ikke bare ser flotte ut, men som også gir brukerne en intuitiv og engasjerende opplevelse. Jeg tror på at god design handler om balansen mellom estetikk og brukervennlighet, der hver linje kode bidrar til å skape noe meningsfylt. Med en solid grunnmur i moderne webutviklingsteknikker og et øye for detaljer, jobber jeg kontinuerlig med å utvikle meg og holde meg oppdatert på nye teknologier.
               </p>
             </div>
 
@@ -134,11 +134,11 @@ const techStack = [
 // Skills with progress bars
 const skills = [
   { name: 'HTML5/CSS', icon: ['fab', 'html5'], level: 90 },
-  { name: 'JavaScript', icon: ['fab', 'js'], level: 85 },
-  { name: 'Vue.js', icon: ['fab', 'vuejs'], level: 75 },
-  { name: 'React', icon: ['fab', 'react'], level: 80 },
+  { name: 'JavaScript', icon: ['fab', 'js'], level: 90 },
+  { name: 'Vue.js', icon: ['fab', 'vuejs'], level: 85 },
+  { name: 'React', icon: ['fab', 'react'], level: 85 },
   { name: 'Tailwind CSS', icon: ['fas', 'paint-brush'], level: 80 },
-  { name: 'TypeScript', icon: ['fas', 'code'], level: 80 }
+  { name: 'TypeScript', icon: ['fas', 'code'], level: 85 }
 ];
 
 // Initialize skill bar animations

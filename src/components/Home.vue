@@ -11,7 +11,7 @@
             data-aos="fade-down"
             data-aos-delay="200"
           >
-            <span class="wave-emoji inline-block animate-wave">👋</span>Hei, jeg heter
+            <span class="wave-emoji inline-block animate-wave">👋</span>Hei, mitt navn er
           </p>
         </div>
 
@@ -130,10 +130,12 @@
 
   // Rotating texts for animation
   const rotatingTexts = [
-    "Skaper moderne webopplevelser",
-    "Spesialisert i Vue.js og React",
-    "Fokusert på brukeropplevelse",
-    "Lidenskapelig om koding"
+  "Skaper engasjerende digitale opplevelser",
+  "Bygger moderne og responsive nettsider",
+  "Brenner for clean code og best practices",
+  "Omdanner ideer til interaktive løsninger",
+  "Dedikert til brukervennlig webdesign",
+  "Utforsker nye teknologier hver dag"
   ];
 
   const currentTextIndex = ref(0);
