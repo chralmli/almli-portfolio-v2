@@ -11,7 +11,8 @@
             data-aos="fade-down"
             data-aos-delay="200"
           >
-            <span class="wave-emoji inline-block animate-wave">👋</span>Hei, mitt navn er
+            <span class="wave-emoji inline-block animate-wave">{{ t('home.greeting.wave') }}</span>
+            {{ t('home.greeting.text')}}
           </p>
         </div>
 
@@ -22,18 +23,18 @@
             data-aos="fade-down"
             data-aos-delay="300"
           >
-            Christian
+            {{ t('home.name') }}
           </h1>
         </div>
 
-        <!-- Title -->
+        <!-- Role -->
         <div class="space-y-4">
           <p
             class="text-xl md:text-4xl font-bold text-white/90"
             data-aos="fade-up"
             data-aos-delay="400"
           >
-            Frontend-utvikler
+            {{ t('home.role') }}
           </p>
 
           <!-- Animated Text Carousel -->
@@ -67,7 +68,7 @@
             href="#portfolio"
             class="group relative inline-flex items-center gap-2 px-6 py-3 text-lg font-medium text-white bg-indigo-600 rounded-full overflow-hidden transition-all duration-300 hover:bg-indigo-700 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-900"
           >
-            <span class="relative z-10">Se Mine Prosjekter</span>
+            <span class="relative z-10">{{ t('home.cta.projects') }}</span>
             <font-awesome-icon
               icon="arrow-right"
               class="relative z-10 transition-transform duration-300 group-hover:translate-x-1"
@@ -80,7 +81,7 @@
             href="#contact"
             class="group px-6 py-3 text-lg font-medium text-indigo-300 border-2 border-indigo-500/30 rounded-full transition-all duration-300 hover:border-indigo-500 hover:text-white hover:scale-105"
           >
-            Kontakt Meg
+            {{ t('home.cta.contact') }}
           </a>
         </div>
 
@@ -97,7 +98,7 @@
             target="_blank"
             rel="noopener noreferrer"
             class="group relative p-3 bg-white/5 rounded-full transition-all duration-300 hover:bg-white/10 hover:scale-110"
-            :aria-label="social.name"
+            :aria-label="social.ariaLabel"
           >
             <font-awesome-icon 
               :icon="social.icon" 
@@ -116,7 +117,7 @@
           <button
             @click="scrollToAbout"
             class="text-white/50 hover:text-white transition-colors duration-300"
-            aria-label="Scroll down"
+            aria-label="t('home.scroll.label')"
           >
             <font-awesome-icon icon="chevron-down" class="text-3xl" />
           </button>
@@ -126,33 +127,49 @@
 </template>
 
 <script setup>
-  import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue';
+  import { ref, computed, onMounted, onBeforeUnmount, nextTick } from 'vue';
+  import { useI18n } from 'vue-i18n';
 
-  // Rotating texts for animation
-  const rotatingTexts = [
-  "Skaper engasjerende digitale opplevelser",
-  "Bygger moderne og responsive nettsider",
-  "Brenner for clean code og best practices",
-  "Omdanner ideer til interaktive løsninger",
-  "Dedikert til brukervennlig webdesign",
-  "Utforsker nye teknologier hver dag"
-  ];
+  // Initialize i18n composable
+  const { t, messages, locale } = useI18n();
+
+
+
+  // Rotating texts for animation with translations
+  const rotatingTexts = computed(() => {
+    return messages.value[locale.value].home.rotatingTexts;
+  });
 
   const currentTextIndex = ref(0);
   let textInterval;
 
-  // Social media links
+  // Social media links with translated aria-labels
   const socialLinks = [
-    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/christian-almli-97b94622/', icon: ['fab', 'linkedin-in'] },
-    { name: 'GitHub', url: 'https://github.com/chralmli', icon: ['fab', 'github'] },
-    { name: 'Instagram', url: 'https://www.instagram.com/christian/', icon: ['fab', 'instagram'] },
+    { 
+      name: 'LinkedIn', 
+      url: 'https://www.linkedin.com/in/christian-almli-97b94622/', 
+      icon: ['fab', 'linkedin-in'],
+      ariaLabel: computed(() => t('home.social.linkedin'))
+    },
+    { 
+      name: 'GitHub', 
+      url: 'https://github.com/chralmli', 
+      icon: ['fab', 'github'],
+      ariaLabel: computed(() => t('home.social.github'))
+    },
+    { 
+      name: 'Instagram', 
+      url: 'https://www.instagram.com/christian/', 
+      icon: ['fab', 'instagram'],
+      ariaLabel: computed(() => t('home.social.instagram'))
+    }
   ];
 
   // Start rotating text
   onMounted(() => {
     textInterval = setInterval(() => {
       nextTick(() => {
-        currentTextIndex.value = (currentTextIndex.value + 1) % rotatingTexts.length;
+        currentTextIndex.value = (currentTextIndex.value + 1) % rotatingTexts.value.length;
       });
     }, 3000);
   });

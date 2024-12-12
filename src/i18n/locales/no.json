@@ -1,0 +1,206 @@
+{
+  "nav": {
+    "home": "Hjem",
+    "about": "Om Meg",
+    "portfolio": "Prosjekter",
+    "contact": "Kontakt"
+  },
+  "home": {
+    "greeting": {
+      "text": "Hei, mitt navn er",
+      "wave": "👋"
+    },
+    "name": "Christian",
+    "role": "Frontend-utvikler",
+    "rotatingTexts": [
+      "Skaper engasjerende digitale opplevelser",
+      "Bygger moderne og responsive nettsider",
+      "Brenner for clean code og best practices",
+      "Omdanner ideer til interaktive løsninger",
+      "Dedikert til brukervennlig webdesign",
+      "Utforsker nye teknologier hver dag"
+    ],
+    "cta": {
+      "projects": "Se Mine Prosjekter",
+      "contact": "Kontakt Meg"
+    },
+    "social": {
+      "linkedin": "Besøk min LinkedIn profil",
+      "github": "Se mine prosjekter på GitHub",
+      "instagram": "Følg meg på Instagram"
+    },
+    "scroll": {
+      "label": "Rull ned til Om Meg seksjonen"
+    }
+  },
+  "about": {
+    "title": "Om Meg",
+    "bio": {
+      "firstParagraph": "Hei! Jeg heter Christian, og jeg er en front-end utvikler med nyervervet utdanning fra Noroff. Med base i Steinkjer, Trøndelag, har jeg funnet min lidenskap i å skape digitale opplevelser som kombinerer kreativ design med sømløs funksjonalitet.",
+      "secondParagraph": "Som utvikler drives jeg av ønsket om å bygge nettsider som ikke bare ser flotte ut, men som også gir brukerne en intuitiv og engasjerende opplevelse. Jeg tror på at god design handler om balansen mellom estetikk og brukervennlighet, der hver linje kode bidrar til å skape noe meningsfylt. Med en solid grunnmur i moderne webutviklingsteknikker og et øye for detaljer, jobber jeg kontinuerlig med å utvikle meg og holde meg oppdatert på nye teknologier."
+    },
+    "skills": {
+      "html": "HTML5/CSS",
+      "javascript": "JavaScript",
+      "vue": "Vue.js",
+      "react": "React",
+      "tailwind": "Tailwind CSS",
+      "typescript": "TypeScript"
+    },
+    "cta": {
+      "projects": "Se Mine Prosjekter",
+      "contact": "Kontakt Meg"
+    },
+    "aria": {
+      "profileImage": "Christian Almlis profilbilde"
+    }
+  },
+  "portfolio": {
+    "title": "Mine Prosjekter",
+    "filters": {
+      "all": "Alle",
+      "react": "React",
+      "vue": "Vue",
+      "typescript": "TypeScript",
+      "javascript": "JavaScript",
+      "next": "Next.js"
+    },
+    "modal": {
+      "technologiesUsed": "Teknologier Brukt",
+      "buttons": {
+        "visit": "Besøk",
+        "sourceCode": "Kildekode"
+      }
+    },
+    "projects": {
+      "holidaze": {
+        "title": "Holidaze",
+        "description": "Holidaze var min avsluttende eksamensoppgave i front-end utvikling ved Noroff.",
+        "features": [
+          "Brukerautentisering: Registrering og innlogging for både kunder og verter",
+          "Søk og filtrering: Brukervennlig søk og filtrering av overnattingssteder",
+          "Kartfunksjonalitet: Dynamisk oppdatering av steder basert på kartinteraksjoner",
+          "Booking-system: Opprettelse og administrering av bestillinger",
+          "Adminpanel: Opprettelse, oppdatering og sletting av steder og bestillinger",
+          "Responsivt design: Optimalisert for alle skjermstørrelser"
+        ]
+      },
+      "crimsonCart": {
+        "title": "Crimson Cart (Nettbutikk)",
+        "description": "Crimson Cart er en eCommerce-plattform utviklet som en del av et skoleprosjekt for å demonstrere ferdigheter innen React. Oppgaven innebar å bygge en komplett nettbutikk med funksjonalitet for produktvisning, handlekurv og bestillinger, basert på et gitt API. Nettstedet har et responsivt design og gir en sømløs handleopplevelse.",
+        "features": [
+          "Dynamisk produktoversikt basert på API-data",
+          "Detaljside for individuelle produkter med pris, rabatter og vurderinger",
+          "Look-ahead søkefunksjon som filtrerer produkter basert på navn",
+          "Handlekurv med mulighet for å legge til/fjerne produkter",
+          "Checkout-side som tømmer handlekurven etter kjøp",
+          "Kontaktskjema med validering for navn, e-post, emne og melding",
+          "Responsivt design for mobil, nettbrett og desktop"
+        ]
+      },
+      "gavelGlance": {
+        "title": "Gavel Glance (Auksjonsside)",
+        "description": "Gavel Glance er en moderne og dynamisk auksjonsplattform utviklet som en del av Noroff's semesterprosjekt 2. Nettstedet er designet for å la brukere legge til auksjonsobjekter, by på andres objekter og administrere sine egne auksjoner. Plattformen tilbyr sømløs navigasjon, responsivt design og funksjonalitet som skaper en engasjerende brukeropplevelse.",
+        "features": [
+          "Brukerautentisering (registrering, innlogging, avataroppdatering)",
+          "Dynamisk visning og søk av auksjonsobjekter",
+          "Mulighet til å opprette og administrere egne auksjoner",
+          "Budgiving-funksjonalitet på andres auksjoner",
+          "Oversikt over brukerkreditt og budhistorikk",
+          "Responsivt design optimalisert for flere enheter"
+        ]
+      },
+      "ironCrew": {
+        "title": "Iron Crew (Sosialt Medie-Klient)",
+        "description": "Iron Crew er et sosialt medieklient-prosjekt utviklet som en del av Noroff's JavaScript 2-eksamen. Nettstedet lar brukere opprette kontoer, poste innhold, og samhandle med andre gjennom et responsivt og brukervennlig grensesnitt.",
+        "features": [
+          "Brukerregistrering med Noroff-epost",
+          "Brukerinnlogging og -autentisering",
+          "Visning av innhold i en feed",
+          "Søke- og filtreringsfunksjonalitet for innlegg",
+          "Oppretting, redigering og sletting av innlegg",
+          "Responsivt design for flere enheter"
+        ]
+      },
+      "grooveGrid": {
+        "title": "Groove Grid",
+        "description": "Groove Grid er en trommeblogg utviklet som eksamensoppgaven på første året hos Noroff. Nettstedet viser evnen til å bygge dynamiske, responsive og brukervennlige nettsider ved å bruke HTML, CSS, JavaScript og WordPress REST API.",
+        "features": [
+          "Dynamisk blogginnhold med WordPress REST API",
+          "Siste innlegg-seksjon med karusell-layout på Hjem-siden",
+          "Bloggside som viser de første 10 innleggene med mulighet for å laste inn flere",
+          "Spesifikk bloggpostside med dynamisk innhold og modal bildevisning",
+          "Tilpasset JavaScript-validering for kontaktskjema",
+          "Responsivt design for sømløs opplevelse på alle enheter"
+        ]
+      },
+      "mainStreetRevival": {
+        "title": "Main Street Revival",
+        "description": "Dette er det offisielle nettstedet for bandet mitt, Main Street Revival, utviklet med Next.js. Nettstedet inkluderer en unik, fra scratch utviklet musikkspiller med en animert vinylplate som roterer når musikken spilles av.",
+        "features": [
+          "Custom musikkspiller med animert vinylplate",
+          "Detaljert informasjon om bandet og kommende konserter",
+          "Responsivt design for optimal brukeropplevelse på alle enheter",
+          "SEO-optimalisering for bedre synlighet på nettet",
+          "Interaktive elementer som fremhever bandets identitet"
+        ]
+      },
+      "gameHub": {
+        "title": "GameHub",
+        "description": "GameHub er en moderne e-handelsplattform bygget som en del av et cross-course prosjekt. Plattformen er utviklet med JavaScript og integrerer WordPress REST API for dynamisk å hente produkter fra WooCommerce.",
+        "features": [
+          "Dynamisk produktinnhold fra WordPress REST API",
+          "Produktdetaljsider med spesifikke data",
+          "Responsivt design for alle enheter",
+          "Kategorisering og visning av produkter",
+          "Grunnleggende sorterings- og filtreringsfunksjoner"
+        ]
+      },
+      "csm": {
+        "title": "Community Science Museum",
+        "description": "Community Science Museum er et interaktivt og informativt nettsted designet for å engasjere målgruppen som består av barn i grunnskolealder (7-15 år) og familier. Nettstedet er laget for å være inspirerende, brukervennlig og inkluderende.",
+        "features": [
+          "Responsivt design som fungerer på alle enheter",
+          "WCAG-tilpasset for tilgjengelighet",
+          "Attraktiv og målrettet design for barn og familier",
+          "Rask nedlasting med optimaliserte bilder",
+          "Strukturerte og semantiske HTML-elementer"
+        ]
+      }
+    }
+  },
+  "contact": {
+    "title": "La Oss Samarbeide",
+    "subtitle": "Som nyutdannet front-end utvikler er jeg alltid på utkikk etter spennende prosjekter og nye utfordringer. Har du en idé eller et prosjekt du vil å diskutere? Ta gjerne kontakt!",
+    "info": {
+      "email": {
+        "title": "Email",
+        "value": "chrisalm97@gmail.com"
+      },
+      "location": {
+        "title": "Adresse",
+        "value": "Steinkjer, Trøndelag, Norge"
+      },
+      "social": {
+        "title": "Følg Meg",
+        "github": "GitHub",
+        "linkedin": "LinkedIn"
+      }
+    },
+    "form": {
+      "name": {
+        "label": "Navn",
+        "placeholder": "Ditt Navn"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "Din Email"
+      },
+      "message": {
+        "label": "Melding",
+        "placeholder": "Fortell meg om ditt prosjekt eller idé..."
+      },
+      "submit": "Send Melding"
+    }
+  }
+}

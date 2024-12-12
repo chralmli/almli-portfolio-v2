@@ -10,7 +10,7 @@
             <!-- Section Header -->
             <div class="text-center mb-16 section-header" data-aos="fade-down">
               <h2 class="text-4xl md:text-6xl font-bold bg-gradient-to-r from-indigo-300 to-purple-300 bg-clip-text text-transparent mb-4">
-                Om Meg
+                {{ t('about.title') }}
               </h2>
               <div class="w-24 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto rounded-full"></div>
             </div>
@@ -27,7 +27,7 @@
                   <div class="relative z-10 rounded-2xl overflow-hidden shadow-2xl transform transition-transform duration-500 group-hover:scale-105 aspect-square main-image">
                     <img
                       src="../assets/images/profile_img.jpg"
-                      alt="Christian Almli"
+                      alt="t('about.aria.profileImage')"
                       class="w-full h-full object-cover"
                     >
                     <!-- Gradient Overlay -->
@@ -59,10 +59,10 @@
             <!-- Bio Paragraphs -->
             <div class="bio-content space-y-4 lg:space-y-6 text-base lg:text-lg text-gray-300">
               <p class="leading-relaxed">
-                Hei! Jeg heter Christian, og jeg er en front-end utvikler med nyervervet utdanning fra Noroff. Med base i Steinkjer, Trøndelag, har jeg funnet min lidenskap i å skape digitale opplevelser som kombinerer kreativ design med sømløs funksjonalitet.
+                {{ t('about.bio.firstParagraph') }}
               </p>
               <p class="leading-relaxed">
-                Som utvikler drives jeg av ønsket om å bygge nettsider som ikke bare ser flotte ut, men som også gir brukerne en intuitiv og engasjerende opplevelse. Jeg tror på at god design handler om balansen mellom estetikk og brukervennlighet, der hver linje kode bidrar til å skape noe meningsfylt. Med en solid grunnmur i moderne webutviklingsteknikker og et øye for detaljer, jobber jeg kontinuerlig med å utvikle meg og holde meg oppdatert på nye teknologier.
+                {{ t('about.bio.secondParagraph') }}
               </p>
             </div>
 
@@ -98,14 +98,14 @@
                 href="#portfolio"
                 class="w-full sm:w-auto text-center inline-flex items-center justify-center gap-2 px-4 lg:px-6 py-2 lg:py-3 bg-indigo-600 text-white rounded-full font-medium hover:bg-indigo-700 transition-colors duration-300"
               >
-                Se Mine Prosjekter
+                {{ t('about.cta.projects') }}
                 <font-awesome-icon icon="arrow-right" />
               </a>
               <a
                 href="#contact"
                 class="w-full sm:w-auto text-center inline-flex items-center justify-center gap-2 px-4 lg:px-6 py-2 lg:py-3 border border-indigo-500/30 text-indigo-300 rounded-full font-medium hover:border-indigo-500 hover:text-white transition-colors duration-300"
               >
-                Kontakt Meg
+                {{ t('about.cta.contact') }}
               </a>
             </div>
           </div>
@@ -117,7 +117,11 @@
 
 <script setup>
 import { ref, onMounted, nextTick } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { gsap } from 'gsap';
+
+// Initialize i18n
+const { t } = useI18n();
 
 const skillsAnimated = ref(false);
 

@@ -1,0 +1,206 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About Me",
+    "portfolio": "Projects",
+    "contact": "Contact"
+  },
+  "home": {
+    "greeting": {
+      "text": "Hi, my name is",
+      "wave": "👋"
+    },
+    "name": "Christian",
+    "role": "Frontend Developer",
+    "rotatingTexts": [
+      "Creating engaging digital experiences",
+      "Building modern and responsive websites",
+      "Passionate about clean code and best practices",
+      "Transforming ideas into interactive solutions",
+      "Dedicated to user-friendly web design",
+      "Exploring new technologies every day"
+    ],
+    "cta": {
+      "projects": "View My Projects",
+      "contact": "Contact Me"
+    },
+    "social": {
+      "linkedin": "Visit my LinkedIn profile",
+      "github": "See my projects on GitHub",
+      "instagram": "Follow me on Instagram"
+    },
+    "scroll": {
+      "label": "Scroll down to About section"
+    }
+  },
+  "about": {
+    "title": "About Me",
+    "bio": {
+      "firstParagraph": "Hi! I'm Christian, and I'm a front-end developer with recently acquired education from Noroff. Based in Steinkjer, Trøndelag, I've found my passion in creating digital experiences that combine creative design with seamless functionality.",
+      "secondParagraph": "As a developer, I'm driven by the desire to build websites that not only look great but also provide users with an intuitive and engaging experience. I believe good design is about balancing aesthetics and usability, where each line of code contributes to creating something meaningful. With a solid foundation in modern web development techniques and an eye for detail, I continuously work to develop myself and stay updated on new technologies."
+    },
+    "skills": {
+      "html": "HTML5/CSS",
+      "javascript": "JavaScript",
+      "vue": "Vue.js",
+      "react": "React",
+      "tailwind": "Tailwind CSS",
+      "typescript": "TypeScript"
+    },
+    "cta": {
+      "projects": "View My Projects",
+      "contact": "Contact Me"
+    },
+    "aria": {
+      "profileImage": "Christian Almli's profile picture"
+    }
+  },
+  "portfolio": {
+    "title": "My Projects",
+    "filters": {
+      "all": "All",
+      "react": "React",
+      "vue": "Vue",
+      "typescript": "TypeScript",
+      "javascript": "JavaScript",
+      "next": "Next.js"
+    },
+    "modal": {
+      "technologiesUsed": "Technologies Used",
+      "buttons": {
+        "visit": "Visit",
+        "sourceCode": "Source Code"
+      }
+    },
+    "projects": {
+      "holidaze": {
+        "title": "Holidaze",
+        "description": "Holidaze was my final exam project in front-end development at Noroff, known as Project Exam 2.",
+        "features": [
+          "User Authentication: Registration and login for both customers and hosts",
+          "Search and Filter: User-friendly search and filtering of accommodations",
+          "Map Functionality: Dynamic location-based updates",
+          "Booking System: Creation and management of bookings",
+          "Admin Panel: Create, update, and delete venues",
+          "Responsive Design: Optimized for all screen sizes"
+        ]
+      },
+      "crimsonCart": {
+        "title": "Crimson Cart (Ecom Store)",
+        "description": "Crimson Cart is an eCommerce platform developed as a school project to demonstrate skills in React. The task involved building a complete online store with functionality for product display, shopping cart, and orders, based on a given API. The site has a responsive design and provides a seamless shopping experience.",
+        "features": [
+          "Dynamic product overview based on API data",
+          "Detail page for individual products with price, discounts, and ratings",
+          "Look-ahead search function that filters products based on name",
+          "Shopping cart with ability to add/remove products",
+          "Checkout page that clears cart after purchase",
+          "Contact form with validation for name, email, subject, and message",
+          "Responsive design for mobile, tablet, and desktop"
+        ]
+      },
+      "gavelGlance": {
+        "title": "Gavel Glance (Auction Site)",
+        "description": "Gavel Glance is a modern and dynamic auction platform developed as part of Noroff's semester project 2. The site is designed to let users add auction items, bid on others' items, and manage their own auctions. The platform offers seamless navigation, responsive design, and functionality that creates an engaging user experience.",
+        "features": [
+          "User authentication (registration, login, avatar updates)",
+          "Dynamic display and search of auction items",
+          "Ability to create and manage own auctions",
+          "Bidding functionality on others' auctions",
+          "Overview of user credit and bid history",
+          "Responsive design optimized for multiple devices"
+        ]
+      },
+      "ironCrew": {
+        "title": "Iron Crew (Social Media Client)",
+        "description": "Iron Crew is a social media client project developed as part of Noroff's JavaScript 2 exam. The site allows users to create accounts, post content, and interact with others through a responsive and user-friendly interface.",
+        "features": [
+          "User registration with Noroff email",
+          "User login and authentication",
+          "Content display in a feed",
+          "Search and filtering functionality for posts",
+          "Create, edit, and delete posts",
+          "Responsive design for multiple devices"
+        ]
+      },
+      "grooveGrid": {
+        "title": "Groove Grid",
+        "description": "Groove Grid is a drum blog developed as the first-year exam at Noroff. The site demonstrates the ability to build dynamic, responsive, and user-friendly websites using HTML, CSS, JavaScript, and WordPress REST API.",
+        "features": [
+          "Dynamic blog content with WordPress REST API",
+          "Latest posts section with carousel layout on Home page",
+          "Blog page showing first 10 posts with load more option",
+          "Specific blog post page with dynamic content and modal image view",
+          "Custom JavaScript validation for contact form",
+          "Responsive design for seamless experience across all devices"
+        ]
+      },
+      "mainStreetRevival": {
+        "title": "Main Street Revival",
+        "description": "This is the official website for my band, Main Street Revival, developed with Next.js. The site includes a unique, from-scratch developed music player with an animated vinyl record that rotates when music is playing.",
+        "features": [
+          "Custom music player with animated vinyl record",
+          "Detailed information about the band and upcoming concerts",
+          "Responsive design for optimal user experience across all devices",
+          "SEO optimization for better visibility online",
+          "Interactive elements that highlight the band's identity"
+        ]
+      },
+      "gameHub": {
+        "title": "GameHub",
+        "description": "GameHub is a modern e-commerce platform built as part of a cross-course project. The platform is developed with JavaScript and integrates WordPress REST API to dynamically fetch products from WooCommerce.",
+        "features": [
+          "Dynamic product content from WordPress REST API",
+          "Product detail pages with specific data",
+          "Responsive design for all devices",
+          "Categorization and display of products",
+          "Basic sorting and filtering functions"
+        ]
+      },
+      "csm": {
+        "title": "Community Science Museum",
+        "description": "Community Science Museum is an interactive and informative website designed to engage primary school children (7-15 years) and families. The site is created to be inspiring, user-friendly, and inclusive.",
+        "features": [
+          "Responsive design that works on all devices",
+          "WCAG-adapted for accessibility",
+          "Attractive and targeted design for children and families",
+          "Fast loading with optimized images",
+          "Structured and semantic HTML elements"
+        ]
+      }
+    }
+  },
+  "contact": {
+    "title": "Let's Work Together",
+    "subtitle": "As a newly graduated front-end developer, I'm always looking for exciting projects and new challenges. Do you have an idea or project you'd like to discuss? Feel free to get in touch!",
+    "info": {
+      "email": {
+        "title": "Email",
+        "value": "chrisalm97@gmail.com"
+      },
+      "location": {
+        "title": "Address",
+        "value": "Steinkjer, Trøndelag, Norway"
+      },
+      "social": {
+        "title": "Follow Me",
+        "github": "GitHub",
+        "linkedin": "LinkedIn"
+      }
+    },
+    "form": {
+      "name": {
+        "label": "Name",
+        "placeholder": "Your Name"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "Your Email"
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Tell me about your project or idea..."
+      },
+      "submit": "Send Message"
+    }
+  }
+}

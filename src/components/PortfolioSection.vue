@@ -6,7 +6,7 @@
       <!-- Section Header -->
       <div class="text-center mb-16" data-aos="fade-down">
         <h2 class="text-4xl md:text-6xl font-bold bg-gradient-to-r from-indigo-300 to-purple-300 bg-clip-text text-transparent mb-4">
-          Mine Prosjekter
+          {{ t('portfolio.title') }}
         </h2>
         <div class="w-24 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto rounded-full"></div>
       </div>
@@ -47,7 +47,7 @@
       >
         <template #header>
           <h3 class="text-2x font-bold text-gray-900">
-            {{ selectedProject.title }}
+            {{ selectedProject?.title }}
           </h3>
         </template>
 
@@ -62,7 +62,7 @@
               {{ selectedProject.description }}
             </p>
             <div>
-              <h4 class="font-semibold text-gray-900 mb-2">Technologies Used:</h4>
+              <h4 class="font-semibold text-gray-900 mb-2">{{ t('portfolio.modal.technologiesUsed') }}</h4>
               <div class="flex flex-wrap gap-2">
                 <span
                   v-for="tech in selectedProject.technologies"
@@ -87,12 +87,12 @@
         <template #footer>
           <div class="flex justify-end gap-4">
             <a
-              :href="selectedProject.url"
+              :href="selectedProject?.url"
               target="_blank"
               class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-lg transition-colors duration-300"
             >
               <font-awesome-icon icon="eye" />
-              Besøk
+              {{ t('portfolio.modal.buttons.visit') }}
             </a>
             <a
               :href="selectedProject.repo"
@@ -100,7 +100,7 @@
               class="inline-flex items-center gap-2 bg-gray-900 hover:bg-gray-800 text-white px-6 py-2 rounded-lg transition-colors duration-300"
             >
               <font-awesome-icon :icon="['fab', 'github']" />
-              Kildekode
+              {{ t('portfolio.modal.buttons.sourceCode') }}
             </a>
           </div>
         </template>
@@ -111,8 +111,11 @@
 
 <script setup>
 import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue';
+import { useI18n } from 'vue-i18n';
 import Modal from './Modal.vue';
 import Project3DCard from './Project3DCard.vue';
+
+const { t } = useI18n();
 
 // Project Images
 import grooveGridImage from '../assets/images/groove-grid_smartmockups.png';
@@ -129,171 +132,116 @@ const activeFilter = ref('all');
 const isModalOpen = ref(false);
 const selectedProject = ref(null);
 
-
 defineOptions({
   name: 'PortfolioSection',
 })
 // Filter configurations
 const filters = [
-  { name: 'Alle', value: 'all', icon: ['fas', 'globe'] },
-  { name: 'React', value: 'react', icon: ['fab', 'react'] },
-  { name: 'Vue', value: 'vue', icon: ['fab', 'vuejs'] },
-  { name: 'TypeScript', value: 'typescript', icon: ['fas', 'code'] },
-  { name: 'JavaScript', value: 'javascript', icon: ['fab', 'js'] },
-  { name: 'Next.js', value: 'next', icon: ['fas', 'code'] }
+  { name: t('portfolio.filters.all'), value: 'all', icon: ['fas', 'globe'] },
+  { name: t('portfolio.filters.react'), value: 'react', icon: ['fab', 'react'] },
+  { name: t('portfolio.filters.vue'), value: 'vue', icon: ['fab', 'vuejs'] },
+  { name: t('portfolio.filters.typescript'), value: 'typescript', icon: ['fas', 'code'] },
+  { name: t('portfolio.filters.javascript'), value: 'javascript', icon: ['fab', 'js'] },
+  { name: t('portfolio.filters.next'), value: 'next', icon: ['fas', 'code'] }
 ];
 
 // Projects data
-const projects = [
+const projects = computed(() => [
 {
     id: 1,
-    title: 'Holidaze',
-    description: 'Holidaze var min avsluttende eksamensoppgave i front-end utvikling ved Noroff, kjent som Project Exam 2. Oppgaven krevde å planlegge, designe og utvikle en komplett front-end for en ny bookingplattform for overnattingssteder. Prosjektet reflekterer mine ferdigheter innen moderne webutvikling, inkludert API-integrasjoner, dynamisk innhold og responsivt design.',
+    title: t('portfolio.projects.holidaze.title'),
+    description: t('portfolio.projects.holidaze.description'),
     image: holidazeImage,
     url: 'https://holidaze-stays.netlify.app/',
     repo: 'https://github.com/chralmli/PE-2-holidaze',
     categories: ['typescript', 'react'],
     technologies: ['TypeScript', 'React', 'Vite', 'Cypress', 'Material-UI', 'Leaflet'],
-    features: [
-      "Brukerautentisering: Registrering og innlogging for både kunder og verter",
-      "Søk og filtrering: Brukervennlig søk og filtrering av overnattingssteder",
-      "Kartfunksjonalitet: Dynamisk oppdatering av steder basert på kartinteraksjoner",
-      "Booking-system: Opprettelse og administrering av bestillinger",
-      "Adminpanel: Opprettelse, oppdatering og sletting av steder og bestillinger",
-      "Responsivt design: Optimalisert for alle skjermstørrelser"
-    ]
+    features: useI18n().messages.value[useI18n().locale.value].portfolio.projects.holidaze.features
   },
   {
     id: 2,
-    title: 'Crimson Cart (Ecom Store)',
-    description: 'Crimson Cart er en eCommerce-plattform utviklet som en del av et skoleprosjekt for å demonstrere ferdigheter innen React. Oppgaven innebar å bygge en komplett nettbutikk med funksjonalitet for produktvisning, handlekurv og bestillinger, basert på et gitt API. Nettstedet har et responsivt design og gir en sømløs handleopplevelse.',
+    title: t('portfolio.projects.crimsonCart.title'),
+    description: t('portfolio.projects.crimsonCart.description'),
     image: ecomImage,
     url: 'https://holidaze-stays.netlify.app/',
     repo: 'https://github.com/chralmli/MainStRevivalWebsite/tree/master',
     categories: ['react'],
     technologies: ["React", "JavaScript", "CSS Modules", "REST API"],
-    features: [
-      "Dynamisk produktoversikt basert på API-data",
-      "Detaljside for individuelle produkter med pris, rabatter og vurderinger",
-      "Look-ahead søkefunksjon som filtrerer produkter basert på navn",
-      "Handlekurv med mulighet for å legge til/fjerne produkter",
-      "Checkout-side som tømmer handlekurven etter kjøp",
-      "Kontaktskjema med validering for navn, e-post, emne og melding",
-      "Responsivt design for mobil, nettbrett og desktop"
-    ]
+    features: useI18n().messages.value[useI18n().locale.value].portfolio.projects.crimsonCart.features
   },
   {
     id: 3,
-    title: 'Gavel Glance (Auksjonsside)',
-    description: "Gavel Glance er en moderne og dynamisk auksjonsplattform utviklet som en del av Noroff's semesterprosjekt 2. Nettstedet er designet for å la brukere legge til auksjonsobjekter, by på andres objekter og administrere sine egne auksjoner. Plattformen tilbyr sømløs navigasjon, responsivt design og funksjonalitet som skaper en engasjerende brukeropplevelse. Gavel Glance integrerer direkte med Noroff Auction API for å håndtere alle backend-funksjoner, som registrering, innlogging og kredittsystem.",
+    title: t('portfolio.projects.gavelGlance.title'),
+    description: t('portfolio.projects.gavelGlance.description'),
     image: auctionImage,
     url: 'https://gavelglance.netlify.app',
     repo: 'https://github.com/chralmli/gavel-glance-SP2',
     categories: ['javascript'],
     technologies: ['JavaScript', 'Tailwind CSS'],
-    features: [
-      "Brukerautentisering (registrering, innlogging, avataroppdatering)",
-      "Dynamisk visning og søk av auksjonsobjekter",
-      "Mulighet til å opprette og administrere egne auksjoner",
-      "Budgiving-funksjonalitet på andres auksjoner",
-      "Oversikt over brukerkreditt og budhistorikk",
-      "Responsivt design optimalisert for flere enheter"
-    ]
+    features: useI18n().messages.value[useI18n().locale.value].portfolio.projects.gavelGlance.features
   },
   {
     id: 4,
-    title: 'Iron Crew (Social Media Client)',
-    description: "Iron Crew er et sosialt medieklient-prosjekt utviklet som en del av Noroff's JavaScript 2-eksamen. Nettstedet lar brukere opprette kontoer, poste innhold, og samhandle med andre gjennom et responsivt og brukervennlig grensesnitt. Prosjektet benytter Noroff Social API for å levere dynamisk innhold og implementere funksjoner som visning, opprettelse, redigering og sletting av innlegg. JWT-tokens og lokal lagring håndteres for sømløs brukerautentisering og sikkerhet.",
+    title: t('portfolio.projects.ironCrew.title'),
+    description: t('portfolio.projects.ironCrew.description'),
     image: socialImage,
     url: 'https://ironcrew.netlify.app/',
     repo: 'https://github.com/chralmli/social-media-client',
     categories: ['javascript'],
     technologies: ['JavaScript', 'CSS'],
-    features: [
-      "Brukerregistrering med Noroff-epost",
-      "Brukerinnlogging og -autentisering",
-      "Visning av innhold i en feed",
-      "Søke- og filtreringsfunksjonalitet for innlegg",
-      "Oppretting, redigering og sletting av innlegg",
-      "Responsivt design for flere enheter"
-    ]
+    features: useI18n().messages.value[useI18n().locale.value].portfolio.projects.ironCrew.features
   },
   {
     id: 5,
-    title: 'Groove Grid',
-    description: 'Groove Grid er en trommeblogg utviklet som eksamensoppgaven på første året hos Noroff. Nettstedet viser evnen til å bygge dynamiske, responsive og brukervennlige nettsider ved å bruke HTML, CSS, JavaScript og WordPress REST API. Det inkluderer flere sider som Hjem, Om, Blogg, Spesifikk Bloggpost og Kontakt, med fokus på funksjonalitet og avanserte webutviklingsprinsipper.',
+    title: t('portfolio.projects.grooveGrid.title'),
+    description: t('portfolio.projects.grooveGrid.description'),
     image: grooveGridImage,
     url: 'https://taupe-medovik-72ed9d.netlify.app/',
     repo: 'https://github.com/chralmli/project-exam-1-chralmli',
     categories: ['javascript'],
     technologies: ['HTML', 'CSS', 'JavaScript', 'WordPress REST API'],
-    features: [
-      "Dynamisk blogginnhold med WordPress REST API",
-      "Siste innlegg-seksjon med karusell-layout på Hjem-siden",
-      "Bloggside som viser de første 10 innleggene med mulighet for å laste inn flere",
-      "Spesifikk bloggpostside med dynamisk innhold og modal bildevisning",
-      "Tilpasset JavaScript-validering for kontaktskjema",
-      "Responsivt design for sømløs opplevelse på alle enheter"
-    ]
+    features: useI18n().messages.value[useI18n().locale.value].portfolio.projects.grooveGrid.features
   },
   {
     id: 6,
-    title: 'Main Street Revival',
-    description: 'Dette er det offisielle nettstedet for bandet mitt, Main Street Revival, utviklet med Next.js. Nettstedet inkluderer en unik, fra scratch utviklet musikkspiller med en animert vinylplate som roterer når musikken spilles av. Designet er moderne og interaktivt, med fokus på både estetikk og funksjonalitet. Nettsiden tilbyr informasjon om bandet, kommende konserter og utgivelser, og gir en engasjerende opplevelse for våre fans.',
+    title: t('portfolio.projects.mainStreetRevival.title'),
+    description: t('portfolio.projects.mainStreetRevival.description'),
     image: bandSiteImage,
     url: 'https://www.msrbandofficial.com/',
     repo: 'https://github.com/chralmli/MainStRevivalWebsite/tree/master',
     categories: ['next'],
     technologies: ["Next.js", "React", "CSS Modules", "HTML"],
-    features: [
-      "Custom musikkspiller med animert vinylplate",
-      "Detaljert informasjon om bandet og kommende konserter",
-      "Responsivt design for optimal brukeropplevelse på alle enheter",
-      "SEO-optimalisering for bedre synlighet på nettet",
-      "Interaktive elementer som fremhever bandets identitet"
-    ]
+    features: useI18n().messages.value[useI18n().locale.value].portfolio.projects.mainStreetRevival.features
   },
   {
     id: 7,
-    title: 'Gamehub',
-    description: 'Gamehub er en moderne e-handelsplattform bygget som en del av et cross-course prosjekt. Plattformen er utviklet med JavaScript og integrerer WordPress REST API for dynamisk å hente produkter fra WooCommerce. Brukere kan utforske en oversikt over produkter og få detaljert informasjon om hvert produkt via en individuell produktside. Designet er responsivt og fokuserer på brukervennlighet og moderne funksjonalitet.',
+    title: t('portfolio.projects.gameHub.title'),
+    description: t('portfolio.projects.gameHub.description'),
     image: gameHubImage,
     url: 'https://polite-concha-5decdc.netlify.app/',
     repo: 'https://github.com/chralmli/social-media-client',
     categories: ['javascript'],
     technologies: ["JavaScript", "HTML", "CSS", "WordPress REST API", "WooCommerce"],
-    features: [
-      "Dynamisk produktinnhold fra WordPress REST API",
-      "Produktdetaljsider med spesifikke data",
-      "Responsivt design for alle enheter",
-      "Kategorisering og visning av produkter",
-      "Grunnleggende sorterings- og filtreringsfunksjoner"
-    ]
+    features: useI18n().messages.value[useI18n().locale.value].portfolio.projects.grooveGrid.features
   },
   {
     id: 8,
-    title: 'Community Science Museum',
-    description: 'Community Science Museum er et interaktivt og informativt nettsted designet for å engasjere målgruppen som består av barn i grunnskolealder (7-15 år) og familier. Nettstedet er laget for å være inspirerende, brukervennlig og inkluderende, med fokus på WCAG-prinsipper og responsivt design. Det oppfordrer besøkende til å utforske museet og oppleve utstillinger og arrangementer gjennom en visuell og intuitiv opplevelse.',
+    title: t('portfolio.projects.csm.title'),
+    description: t('portfolio.projects.csm.description'),
     image: csmImage,
     url: 'https://elaborate-speculoos-c50810.netlify.app/',
     repo: 'https://github.com/chralmli/semester_project-1',
     categories: ['HTML, CSS'],
     technologies: ['HTML', 'CSS'],
-    features: [
-      "Responsivt design som fungerer på alle enheter",
-      "WCAG-tilpasset for tilgjengelighet",
-      "Attraktiv og målrettet design for barn og familier",
-      "Rask nedlasting med optimaliserte bilder",
-      "Strukturerte og semantiske HTML-elementer"
-    ]
+    features: useI18n().messages.value[useI18n().locale.value].portfolio.projects.csm.features
   },
-];
+]);
 
 // Computed properties
 const filteredProjects = computed(() => {
-  if (activeFilter.value === 'all') return projects;
+  if (activeFilter.value === 'all') return projects.value;
 
-  return projects.filter(project => {
+  return projects.valuefilter(project => {
     const projectCategories = project.categories || [];
     return projectCategories.includes(activeFilter.value);
   });

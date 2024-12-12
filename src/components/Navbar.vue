@@ -25,7 +25,7 @@
                 :class="{ 'active': activeSection === item.href.substring(1) }"
                 @click.prevent="scrollToSection(item.href)"
               >
-                {{ item.label }}
+                {{ t(item.label) }}
                 <span class="absolute bottom-0 left-0 w-full h-0.5 bg-indigo-600 transform scale-x-0 transition-transform duration-300 origin-left hover:scale-x-100"></span>
               </a>
             </template>
@@ -36,9 +36,12 @@
               @click.prevent="scrollToSection('#contact')"
               class="ml-4 px-6 py-2 bg-indigo-600 text-white rounded-full font-medium hover:bg-indigo-700 transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
             >
-              Kontakt Meg
+              {{ t('nav.contact')}}
             </a>
           </div>
+
+          <!-- Language Switcher -->
+          <LanguageSwitcher :scrolled="scrolled" class="ml-2" />
 
           <!-- Mobile Menu Button -->
           <button
@@ -85,8 +88,13 @@
               :class="{ 'text-indigo-600': activeSection === item.href.substring(1) }"
               @click="handleMobileNavClick(item.href)"
             >
-              {{ item.label }}
+              {{ t(item.label) }}
             </a>
+          </div>
+
+          <!-- Language Switcher in mobile menu -->
+          <div class="flex justify-center-mt-6">
+            <LanguageSwitcher :scrolled="true" />
           </div>
 
           <!-- Mobile Social Links -->
@@ -108,9 +116,14 @@
   </nav>
 </template>
 
+
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
+import { useI18n } from 'vue-i18n';
 import AlmliLogo from '@/assets/images/almli-solutions-logo.svg';
+import LanguageSwitcher from './LanguageSwitcher.vue';
+
+const { t } = useI18n();
 
 const isMenuOpen = ref(false);
 const scrolled = ref(false);
@@ -119,10 +132,10 @@ const activeSection = ref('home');
 let lastScrollY = 0;
 
 const navItems = [
-  { href: '#home', label: 'Hjem' },
-  { href: '#about', label: 'Om Meg' },
-  { href: '#portfolio', label: 'Prosjekter' },
-  { href: '#contact', label: 'Kontakt' }
+  { href: '#home', label: 'nav.home' },
+  { href: '#about', label: 'nav.about' },
+  { href: '#portfolio', label: 'nav.portfolio' },
+  { href: '#contact', label: 'nav.contact' }
 ];
 
 const socialLinks = [

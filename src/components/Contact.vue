@@ -5,12 +5,11 @@
       <!-- Section Header -->
       <div class="text-center mb-16" data-aos="fade-down">
         <h2 class="text-4xl md:text-6xl font-bold bg-gradient-to-r from-indigo-300 to-purple-300 bg-clip-text text-transparent mb-4">
-          La Oss Samarbeide
+          {{ t('contact.title')}}
         </h2>
         <div class="w-24 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto rounded-full"></div>
         <p class="mt-6 text-gray-300 max-w-2xl mx-auto">
-          Som nyutdannet front-end utvikler er jeg alltid på utkikk etter spennende prosjekter og nye utfordringer.
-          Har du en idé eller et prosjekt du vil å diskutere? Ta gjerne kontakt!
+          {{ t('contact.subtitle')}}
         </p>
       </div>
 
@@ -43,7 +42,7 @@
             <div>
               <h3 class="text-xl font-semibold text-white mb-2">Adresse</h3>
               <p class="text-gray-300">
-                Steinkjer, Trøndelag, Norge
+                {{ t('contact.info.location.value') }}
               </p>
             </div>
           </div>
@@ -84,7 +83,7 @@
               type="text"
               id="name"
               class="form-input"
-              placeholder="Ditt Navn"
+              :placeholder="t('contact.form.name.placeholder')"
               required
             >
           </div>
@@ -96,7 +95,7 @@
               type="email"
               id="email"
               class="form-input"
-              placeholder="Din Email"
+              :placeholder="t('contact.form.email.placeholder')"
               required
             >
           </div>
@@ -107,7 +106,7 @@
               v-model="formData.message"
               id="message"
               class="form-textarea bg-white/5 border-gray-700 text-white"
-              placeholder="Fortell meg om ditt prosjekt elle idé..."
+              :placeholder="t('contact.form.message.placeholder')"
               required
             ></textarea>
           </div>
@@ -116,7 +115,7 @@
             type="submit"
             class="w-full group relative px-8 py-3 bg-gradient-to-r from-indigo-500 to-purple-500 text-white rounded-xl font-medium hover:shadow-indigo-500/25 hover:shadow-lg transition-all duration-300 transform hover:scale-[1.02]"
           >
-            <div class="relative z-10">Send Melding</div>
+            <div class="relative z-10">{{ t('contact.form.submit') }}</div>
             <div class="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </button>
         </form>
@@ -127,13 +126,15 @@
 
 <script setup>
 import { ref } from 'vue';
-import patternImage from '../assets/images/pattern-2-img.png'
+import { useI18n } from 'vue-i18n';
 
 const formData = ref({
   name: '',
   email: '',
   message: ''
 });
+
+const { t } = useI18n();
 
 const socialLinks = [
   { name: 'GitHub', icon: ['fab', 'github'], url: 'https://github.com/chralmli'},
