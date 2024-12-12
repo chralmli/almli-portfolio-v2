@@ -3,7 +3,7 @@
     <!-- Main Content -->
     <div class="relative z-1 container mx-auto px-4 h-screen flex flex-col justify-center items-center">
       <!-- Profile Section -->
-      <div class="text-center space-y-6 max-w-4xl mx-auto">
+      <div class="text-center space-y-6 max-w-4xl min-w-[100%] mx-auto">
         <!-- Animated Hello Text -->
         <div class="overflow-hidden">
           <p
@@ -39,7 +39,7 @@
 
           <!-- Animated Text Carousel -->
           <div
-            class="h-8 md:h-10 overflow-hidden text-indigo-300 relative"
+            class="min-h-[3rem] md:min-h-[2.5rem] overflow-hidden text-indigo-300 relative"
             data-aos="fade-up"
             data-aos-delay="500"
           >
@@ -50,7 +50,7 @@
             >
               <p
                 :key="currentTextIndex"
-                class="text-slide-item"
+                class="text-slide-item px-4"
               >
                 {{ rotatingTexts[currentTextIndex] }}
               </p>
@@ -133,8 +133,6 @@
   // Initialize i18n composable
   const { t, messages, locale } = useI18n();
 
-
-
   // Rotating texts for animation with translations
   const rotatingTexts = computed(() => {
     return messages.value[locale.value].home.rotatingTexts;
@@ -206,6 +204,15 @@
   will-change: transform, opacity;
   backface-visibility: hidden;
   transform-style: preserve-3d;
+  white-space: normal;
+  line-height: 1.5;
+  min-height: 2rem;
+}
+
+@screen md {
+  .text-slide-item {
+    min-height: 2.5rem;
+  }
 }
 
 .text-slide-enter-active {
@@ -220,12 +227,12 @@
 
 .text-slide-enter-from {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(30px);
 }
 
 .text-slide-leave-to {
   opacity: 0;
-  transform: translateY(-20px);
+  transform: translateY(-30px);
 }
 
 .text-slide-move {

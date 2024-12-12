@@ -12,13 +12,13 @@
       </div>
 
       <!-- Filter Buttons -->
-      <div class="flex flex-wrap justify-center mb-12 gap-4" data-aos="fade-up">
+      <div class="flex flex-wrap justify-center mb-12 gap-2 md:gap-4" data-aos="fade-up">
         <button 
           v-for="filter in filters" 
           :key="filter.name" 
           @click="handleFilterClick(filter)" 
           :class="[
-            'px-3 sm:px-4 py-2 rounded-full transition-all duration-300 flex items-center gap-1.5 backdrop-blur-sm sm:text-base whitespace-nowrap',
+            'px-2 md:px-3 lg:px-4 py-1.5 md:py-2 rounded-full transition-all duration-300 flex items-center gap-1 md:gap-1.5 backdrop-blur-sm text-sm sm:text-base whitespace-nowrap',
             activeFilter === filter.name
               ? 'bg-indigo-600/90 text-white shadow-lg shadow-indigo-500/25'
               : 'bg-white/5 text-gray-300 hover:bg-white/10'
@@ -85,21 +85,21 @@
         </template>
 
         <template #footer>
-          <div class="flex justify-end gap-4">
+          <div class="flex flex-col sm:flex-row justify-end gap-3 sm:gap-4">
             <a
               :href="selectedProject?.url"
               target="_blank"
-              class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-lg transition-colors duration-300"
+              class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-4 sm:px-6 py-2 rounded-lg transition-colors duration-300 text-sm sm:text-base w-full sm:w-auto"
             >
-              <font-awesome-icon icon="eye" />
+              <font-awesome-icon icon="eye" class="text-lg sm:text-base" />
               {{ t('portfolio.modal.buttons.visit') }}
             </a>
             <a
               :href="selectedProject.repo"
               target="_blank"
-              class="inline-flex items-center gap-2 bg-gray-900 hover:bg-gray-800 text-white px-6 py-2 rounded-lg transition-colors duration-300"
+              class="inline-flex items-center justify-center gap-2 bg-gray-900 hover:bg-gray-800 text-white px-4 sm:px-6 py-2 rounded-lg transition-colors duration-300 text-sm sm:text-base w-full sm:w-auto"
             >
-              <font-awesome-icon :icon="['fab', 'github']" />
+              <font-awesome-icon :icon="['fab', 'github']" class="text-lg sm:text-base" />
               {{ t('portfolio.modal.buttons.sourceCode') }}
             </a>
           </div>

@@ -69,7 +69,8 @@
       "technologiesUsed": "Technologies Used",
       "buttons": {
         "visit": "Visit",
-        "sourceCode": "Source Code"
+        "sourceCode": "Source Code",
+        "moreInfo": "More Info"
       }
     },
     "projects": {

@@ -69,7 +69,8 @@
       "technologiesUsed": "Teknologier Brukt",
       "buttons": {
         "visit": "Besøk",
-        "sourceCode": "Kildekode"
+        "sourceCode": "Kildekode",
+        "moreInfo": "Mer Info"
       }
     },
     "projects": {
