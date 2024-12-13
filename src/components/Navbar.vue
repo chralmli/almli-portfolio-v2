@@ -41,7 +41,7 @@
           </div>
 
           <!-- Language Switcher -->
-          <LanguageSwitcher :scrolled="scrolled" class="ml-2" />
+          <LanguageSwitcher :scrolled="scrolled" class="ml-2 hidden md:block" />
 
           <!-- Mobile Menu Button -->
           <button
@@ -93,7 +93,7 @@
           </div>
 
           <!-- Language Switcher in mobile menu -->
-          <div class="flex justify-center-mt-6">
+          <div class="flex justify-center mt-6 ml-2">
             <LanguageSwitcher :scrolled="true" />
           </div>
 
